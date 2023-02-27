@@ -23,7 +23,7 @@ export default {
         if (!query) {
             const categories = readdirSync("./src/commands").filter(category => category !== "pengembang");
             embed.setTitle("Daftar Perintah")
-                .setDescription(`Untuk menggunakan perintahku selalu memakai awalan \`/\`. Gunakan \`/help nama-perintah:\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? Gabung [server dukungan](${serverLink})`)
+                .setDescription(`Untuk menggunakan perintahku selalu memakai slash (\`/\`). Gunakan \`/help nama-perintah:\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? Gabung [server dukungan](${serverLink})`)
                 .setThumbnail(listImage);
 
             categories.forEach(category => {
