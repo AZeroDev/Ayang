@@ -6,7 +6,7 @@ export function handler(client) {
     .forEach(directory => {
         readdirSync(`./src/commands/${directory}`)
         .forEach(async file => {
-            const command = (await(`../commands/${directory}/${file}`)).default;
+            const command = (await import(`../commands/${directory}/${file}`)).default;
             client.commands.set(command.data.name, command);
         });
     });

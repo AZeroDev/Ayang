@@ -16,7 +16,7 @@ export default {
                 console.error(`Kesalahan saat menjalankan '${interaction.commandName}'`, error);
             }
         }
-        else if (interaction.isAutoComplete()) {
+        else if (interaction.isAutocomplete()) {
             const command = client.commands.get(interaction.commandName);
             if (!command) {
                 console.error(`Tidak ditemukan perintah yang cocok untuk '${interaction.commandName}'`);

@@ -7,10 +7,10 @@ export default {
     data: new SlashCommandBuilder()
         .setName("help")
         .setDescription("Cek informasi bantuan perintah bot")
-        .addStringOptions(option =>
+        .addStringOption(option =>
             option.setName("nama-perintah")
-                .setDecription("Menampilkan bantuan per perintah tertentu")
-                .setAutoComplete(true)
+                .setDescription("Menampilkan bantuan per perintah tertentu")
+                .setAutocomplete(true)
         ),
     category: "Informasi",
     execute: async(interaction) => {

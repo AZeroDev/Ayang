@@ -14,7 +14,7 @@ client.config = config;
 
 // reload handler
 ["commands", "events"]
-.forEach(file => file.handler(client));
+.forEach(async file => (await import(`./handlers/${file}.js`)).handler(client));
 
 client.login(process.env.Token);
 
