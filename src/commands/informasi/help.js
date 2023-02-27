@@ -17,7 +17,7 @@ export default {
         await interaction.deferReply({ ephemeral: true });
         const { colors, serverLink } = interaction.client.config;
 
-        const query = interaction.options.getSting("nama-perintah");
+        const query = interaction.options.getString("nama-perintah");
         const embed = new EmbedBuilder().setColor(colors.default);
 
         if (!query) {
