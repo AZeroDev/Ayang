@@ -62,7 +62,7 @@ export default {
 }
 
 async function createButtonInteface(interaction, message, first) {
-    const filter = i => i.isButton() && i.user && i.message.author.id == client.user.id;
+    const filter = i => i.isButton() && i.user && i.message.author.id == interaction.client.user.id;
     const collector = await message.createMessageComponentCollector({ 
         filter,
         time: 60000*3
