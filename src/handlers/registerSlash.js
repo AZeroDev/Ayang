@@ -1,20 +1,20 @@
 import { REST, Routes } from "discord.js";
 import { readdirSync } from "node:fs";
 
-import client from "../index.js";
-
 const { ClientId, GuildId, Token } = process.env;
 
 export async function register(type) {
-    if (!client.isReady()) return console.info(new TypeError("Cannot import client before ready!"));
-
     // registering slash commands
     const commands = [];
-    client.commands
-    .filter(command => command.category !== "Pengembang" && !type)
-    .forEach(command => {
-        commands.push(command.data.toJSON());
-    });
+    readdirSync("./src/commands")
+        .filter(cmd => cmd.category !== "Pengembang" && !type)
+        .forEach(directory => {
+            readdirSync(`./src/commands/${diresctory}`)
+                .forEach(async file => {
+                    const command = (await import(`../commands/${directory}/${file}`)).default;
+                    commands.push(command.data.toJSON());
+                })
+        });
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
