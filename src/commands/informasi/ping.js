@@ -3,7 +3,7 @@ import { SlashCommandBuilder } from "discord.js";
 export default {
     data: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("Cek latensi bot"),
+        .setDescription("Mengirim latensi bot"),
     category: "Informasi",
     execute: async(interaction) => {
         const timestamp = await Date.now();

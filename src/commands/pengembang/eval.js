@@ -8,7 +8,7 @@ export default {
         .setDescription("Evaluasi kode pemrograman")
         .addStringOption(option => 
             option.setName("kode-program")
-                .setDescription("Sebuah kode pemrograman basis JavaScript")
+                .setDescription("Kode pemrograman basis JavaScript")
                 .setRequired(true)
         ),
     category: "Pengembang",
