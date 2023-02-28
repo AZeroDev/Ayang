@@ -13,6 +13,7 @@ export async function register(type) {
                 readdirSync(`./src/commands/${diresctory}`)
                 .map(async file => {
                         const command = (await import(`../commands/${directory}/${file}`)).default;
+                        console.log(command);
                         return command.data.toJSON();
                 })
             )
