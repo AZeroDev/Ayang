@@ -1,12 +1,15 @@
-import { Events } from "discord.js";
+import { Events, EmbedBuilder } from "discord.js";
 
 export default {
     name: Events.InteractionCreate,
     execute: async(client, interaction) => {
+        const embed = new EmbedBuilder().setColor(client.config.colors.error);
+
         if (interaction.isChatInputCommand()) {
             const command = client.commands.get(interaction.commandName);
             if (!command) {
-                console.error(`Tidak ditemukan perintah yang cocok untuk '${interaction.commandName}'`);
+                embed.setDescription(`Perintah \`/${interaction.commandName}\` tidak dapat dijalankan.`);
+                await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
 
@@ -19,12 +22,13 @@ export default {
         else if (interaction.isAutocomplete()) {
             const command = client.commands.get(interaction.commandName);
             if (!command) {
-                console.error(`Tidak ditemukan perintah yang cocok untuk '${interaction.commandName}'`);
+                embed.setDescription(`Perintah \`/${interaction.commandName}\` tidak dapat dijalankan.`);
+                await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
 
             if (interaction.commandName === "help") {
-                const commands = client.commands.filter(cmd => !cmd.private);
+                const commands = client.commands.filter(cmd => cmd.category !== "Pengembang");
 
                 await interaction.respond(
                     commands.map(cmd => ({ name: cmd.data.name, value: cmd.data.name }))

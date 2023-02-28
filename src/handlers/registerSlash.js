@@ -55,3 +55,10 @@ async function guild(commands) {
         console.error(error);
     }
 }
+
+if (process.env.BuildSlash === "guild") {
+    register("guild");
+}
+else {
+    register();
+}

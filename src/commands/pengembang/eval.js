@@ -10,6 +10,7 @@ export default {
             option.setName("kode-program")
                 .setDescription("Sebuah kode pemrograman basis JavaScript")
         ),
+    category: "Pengembang",
     execute: async(interaction) => {
         const { colors } = interaction.client.config;
         const code = interaction.options.getString("kode-program");
