@@ -8,12 +8,11 @@ export async function register(type) {
     const commands = [];
     readdirSync("./src/commands")
         .filter(cmd => cmd.category !== "Pengembang" && !type)
-        .forEach(directory => {
-            readdirSync(`./src/commands/${diresctory}`)
-                .forEach(async file => {
-                    const command = (await import(`../commands/${directory}/${file}`)).default;
-                    commands.push(command.data.toJSON());
-                })
+        .forEach(async directory => {
+            for await (const file of readdirSync(`./src/commands/${diresctory}`)) {
+                const command = (await import(`../commands/${directory}/${file}`)).default;
+                commands.push(command.data.toJSON());
+            }
         });
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
