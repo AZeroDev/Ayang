@@ -21,7 +21,7 @@ export function register(type) {
         });
     };
 
-    Promises.all(promises).then(o_O => void 0);
+    Promise.all(promises).then(o_O => void 0);
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
