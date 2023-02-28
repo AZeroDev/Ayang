@@ -8,16 +8,13 @@ export async function register(type) {
     const commands = [];
     for (const directory of readdirSync("./src/commands")
         .filter(cmd => cmd.category !== "Pengembang" && !type)) {
-        commands.push(
-            await Promise.all(
-                readdirSync(`./src/commands/${diresctory}`)
-                .map(async file => {
-                        const command = (await import(`../commands/${directory}/${file}`)).default;
-                        console.log(command);
-                        return command.data.toJSON();
-                })
-            )
-        );
+        comsole.log(await Promise.all(
+            readdirSync(`./src/commands/${diresctory}`)
+            .map(async file => {
+                const command = (await import(`../commands/${directory}/${file}`)).default;
+                return command.data.toJSON();
+            })
+        ));
     };
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
