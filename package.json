@@ -4,21 +4,25 @@
   "description": "Sebuah bot lokal asli indonesia yang memiliki fitur ekonomi, leveling, dan minigame",
   "main": "index.js",
   "type": "module",
+  "dependencies": {
+    "discord.js": "^14.7.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "discord-js-bot"
+  ],
+  "author": "VinnDev",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/VinnDev/Ayang.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/VinnDev/Ayang/issues"
   },
-  "homepage": "https://github.com/VinnDev/Ayang#readme",
-  "dependencies": {
-    "discord.js": "^14.7.1"
-  }
+  "homepage": "https://github.com/VinnDev/Ayang#readme"
 }
