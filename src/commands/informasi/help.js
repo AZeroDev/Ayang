@@ -40,7 +40,7 @@ export default {
 
             const action = new ActionRowBuilder().addComponents(...buttons);
 
-            interaction.reply({ embeds: [embed], components: [action], fetchReply: true }).then(message => createButtonInteface(interaction, message, buttons, { buttons, embed, action, }));
+            interaction.reply({ embeds: [embed], components: [action], fetchReply: true }).then(message => createButtonInteface(interaction, message, { buttons, embed, action, }));
             return;
         }
         else {
