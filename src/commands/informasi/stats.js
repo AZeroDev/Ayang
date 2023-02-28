@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 
 const iStatus = {
     "online": "https://cdn.discordapp.com/emojis/689448141774389275.png",
