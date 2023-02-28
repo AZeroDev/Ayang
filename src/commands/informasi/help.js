@@ -35,6 +35,7 @@ export default {
             });
 
             await interaction.editReply({ embeds: [embed] });
+            return;
         }
         else {
             const command = interaction.client.commands.get(query);
@@ -49,6 +50,7 @@ export default {
                 .setDescription(command.data.description);
 
             await interaction.editReply({ embeds: [embed] });
+            return;
         }
     }
 }
