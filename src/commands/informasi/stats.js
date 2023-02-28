@@ -24,7 +24,7 @@ export default {
             .setThumbnail(interaction.client.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .addFields([
                 { name: "ID Pengguna", value: interaction.client.user.id, inline: true },
-                { name: "Telah Dibuat", value: `<t:${int(client.user.createdTimestamp)}:D>`, inline: true },
+                { name: "Telah Dibuat", value: `<t:${int(interaction.client.user.createdTimestamp)}:D>`, inline: true },
                 { name: "Developer", value: `[${(await interaction.client.users.fetch(process.env.DeveloperId)).tag}](https://discord.com/users/${process.env.DeveloperId})`, inline: true }
             ])
             .addFields([
