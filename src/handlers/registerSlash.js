@@ -7,14 +7,11 @@ export async function register(type) {
     // registering slash commands
     const commands = [];
     for (const directory of readdirSync("./src/commands")
-        .filter(cmd => cmd.category !== "Pengembang")) {
-        commands.push(await Promise.all(
-            readdirSync(`./src/commands/${directory}`)
-            .map(async file => {
-                const command = (await import(`../commands/${directory}/${file}`)).default;
-                return command.data.toJSON();
-            })
-        ));
+        .filter(cmd => type === "guild" ? cmd : cmd.category !== "Pengembang")) {
+        for (const file of readdirSync(`./src/commands/${directory}`)) {
+            const command = (await import(`../commands/${directory}/${file}`)).default;
+            commands.push(command.data.toJSON());
+        }
     };
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
