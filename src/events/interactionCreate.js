@@ -12,6 +12,7 @@ export default {
                 await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
+            if (command.category === "Pengembang" && interaction.userId !== process.env.DeveloperId) return;
 
             try {
                 command.execute(interaction);
@@ -26,6 +27,7 @@ export default {
                 await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
+            if (command.category === "Pengembang" && interaction.userId !== process.env.DeveloperId) return;
 
             if (interaction.commandName === "help") {
                 const commands = client.commands.filter(cmd => cmd.category !== "Pengembang");

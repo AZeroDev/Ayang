@@ -14,7 +14,6 @@ export default {
         ),
     category: "Informasi",
     execute: async(interaction) => {
-        await interaction.deferReply({ ephemeral: true });
         const { colors, serverLink } = interaction.client.config;
 
         const query = interaction.options.getString("nama-perintah");
@@ -23,7 +22,7 @@ export default {
         if (!query) {
             const categories = readdirSync("./src/commands").filter(category => category !== "pengembang");
             embed.setTitle("Daftar Perintah")
-                .setDescription(`Untuk menggunakan perintahku selalu memakai slash (\`/\`). Gunakan \`/help nama-perintah:\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? Gabung [server dukungan](${serverLink})`)
+                .setDescription(`Prefix perintahku: \`/\`. Gunakan \`/help nama-perintah:\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
                 .setThumbnail(listImage);
 
             categories.forEach(category => {
@@ -34,7 +33,7 @@ export default {
                 )
             });
 
-            await interaction.editReply({ embeds: [embed] });
+            interaction.reply({ embeds: [embed] });
             return;
         }
         else {
@@ -42,14 +41,14 @@ export default {
             if (!command) {
                 embed.setColor(colors.error)
                 embed.setDescription(`Oh! Aku tidak menemukan perintah \`${query}\``)
-                await interaction.editReply({ embeds: [embed] });
+                interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
             embed.setAuthor({ name: command.data.name })
                 .setTitle(`Kategori: ${command.category}`)
                 .setDescription(command.data.description);
 
-            await interaction.editReply({ embeds: [embed] });
+            interaction.reply({ embeds: [embed] });
             return;
         }
     }

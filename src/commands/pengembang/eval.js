@@ -9,6 +9,7 @@ export default {
         .addStringOption(option => 
             option.setName("kode-program")
                 .setDescription("Sebuah kode pemrograman basis JavaScript")
+                .setRequired(true)
         ),
     category: "Pengembang",
     execute: async(interaction) => {
