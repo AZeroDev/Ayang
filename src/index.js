@@ -13,7 +13,7 @@ client.commands = new Collection();
 client.config = config;
 
 // reload handler
-["commands", "events"]
+["commands", "events", "database"]
 .forEach(async file => (await import(`./handlers/${file}.js`)).handler(client));
 
 client.login(process.env.Token);
