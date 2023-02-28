@@ -28,9 +28,9 @@ export default {
 
             categories.forEach(category => {
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
-                const list = interaction.client.commands.filter(cmd => cmd.category === category).map(cmd => `\`${cmd.data.name}\``);
+                const commandList = interaction.client.commands.filter(cmd => cmd.category === category).map(cmd => `\`${cmd.data.name}\``);
                 embed.addFields(
-                    { name: `Kategori: ${category}`, value: list.join(" ") }
+                    { name: category, value: commandList.join(" ") }
                 )
             });
 
