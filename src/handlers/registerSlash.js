@@ -8,8 +8,8 @@ export async function register(type) {
     const commands = [];
     for (const directory of readdirSync("./src/commands")
         .filter(cmd => cmd.category !== "Pengembang")) {
-        console.log(await Promise.all(
-            readdirSync(`./src/commands/${diresctory}`)
+        commands.push(await Promise.all(
+            readdirSync(`./src/commands/${directory}`)
             .map(async file => {
                 const command = (await import(`../commands/${directory}/${file}`)).default;
                 return command.data.toJSON();
