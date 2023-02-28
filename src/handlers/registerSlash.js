@@ -1,7 +1,7 @@
 import { REST, Routes } from "discord.js";
 import { readdirSync } from "node:fs";
 
-import { client } from "../index.js";
+import client from "../index.js";
 
 const { ClientId, GuildId, Token } = process.env;
 
