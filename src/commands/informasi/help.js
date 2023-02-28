@@ -29,7 +29,7 @@ export default {
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
                 const commandList = interaction.client.commands.filter(cmd => cmd.category === category).map(cmd => `\`${cmd.data.name}\``);
                 embed.addFields(
-                    { name: category, value: commandList.join(" ") }
+                    { name: `Kategori ${category}`, value: commandList.join(" ") }
                 )
             });
 
