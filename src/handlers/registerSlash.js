@@ -6,7 +6,7 @@ import client from "../index.js";
 const { ClientId, GuildId, Token } = process.env;
 
 export async function register(type) {
-    if (!client.isReady()) throw "Cannot import client before ready!";
+    if (!client.isReady()) return console.info(new TypeError("Cannot import client before ready!"));
 
     // registering slash commands
     const commands = [];
