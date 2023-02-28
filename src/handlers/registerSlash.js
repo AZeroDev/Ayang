@@ -8,7 +8,7 @@ export function register(type) {
     const commands = [];
     const categories = readdirSync("./src/commands").filter(category => category !== "pengembang" && !type);
 
-    for await (const directory of categories) {
+    for (const directory of categories) {
         readdirSync(`./src/commands/${directory}`)
         .forEach(async file => {
             const command = (await(`../commands/${directory}/${file}`)).default;
