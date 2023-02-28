@@ -109,5 +109,5 @@ async function createButtonInteface(interaction, message, first) {
         const action = new ActionRowBuilder().addComponents(...buttons);
 
         message.edit({ embeds: [first.embed], components: [action] }).catch(o_O => void 0);
-    })
+    });
 }
