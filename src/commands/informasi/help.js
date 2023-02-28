@@ -23,7 +23,7 @@ export default {
             embed.setTitle("Daftar Perintah")
                 .setDescription(`Prefix perintahku: \`/\`\nGunakan \`/help [nama-perintah]\` untuk info bantuan per perintah tertentu.\nMau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
                 .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
-                .setFooter({ text: `Tersedia ${interaction.client.commands.filter(cmd => cmd.categroy === "Pengembang").size} Perintah`});
+                .setFooter({ text: `Tersedia ${interaction.client.commands.filter(cmd => cmd.category !== "Pengembang").size} Perintah`});
 
             categories.forEach(category => {
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
@@ -79,13 +79,12 @@ async function createButtonInteface(interaction, message, first) {
 
     collector.on("collect", async i => {
         await i.deferUpdate();
+        buttons = buttons.map(button => button.setDisabled(false));
 
         if (i.customId === "kembali") {
             await i.editReply({ embeds: [first.embed], components: [first.action] });
             return;
         }
-
-        buttons = buttons.map(button => button.setDisabled(false));
 
         const commands = i.client.commands.filter(cmd => cmd.category === i.customId);
         const embed = new EmbedBuilder()
