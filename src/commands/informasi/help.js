@@ -22,7 +22,7 @@ export default {
         if (!query) {
             const categories = readdirSync("./src/commands").filter(category => category !== "pengembang");
             embed.setTitle("Daftar Perintah")
-                .setDescription(`Prefix perintahku: \`/\`. Gunakan \`/help nama-perintah:\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
+                .setDescription(`Prefix perintahku: \`/\`\nGunakan \`/help [nama-perintah]\` untuk menampilkan bantuan per perintah tertentu. Mau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
                 .setThumbnail(listImage);
 
             categories.forEach(category => {

@@ -12,7 +12,11 @@ export default {
                 await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
-            if (command.category === "Pengembang" && interaction.userId !== process.env.DeveloperId) return;
+            if (command.category === "Pengembang" && interaction.user.id !== process.env.DeveloperId) {
+                embed.setDescription("Kamu tidak bisa memakai perintah ini!");
+                interaction.reply({ embeds: [embed], ephemeral: true })
+                return;
+            }
 
             try {
                 command.execute(interaction);
@@ -27,7 +31,11 @@ export default {
                 await interaction.reply({ embeds: [embed], ephemeral: true });
                 return;
             }
-            if (command.category === "Pengembang" && interaction.userId !== process.env.DeveloperId) return;
+            if (command.category === "Pengembang" && interaction.user.id !== process.env.DeveloperId) {
+                embed.setDescription("Kamu tidak bisa memakai perintah ini!");
+                interaction.reply({ embeds: [embed], ephemeral: true })
+                return;
+            }
 
             if (interaction.commandName === "help") {
                 const commands = client.commands.filter(cmd => cmd.category !== "Pengembang");
