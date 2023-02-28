@@ -6,9 +6,9 @@ const { ClientId, GuildId, Token } = process.env;
 export async function register(type) {
     // registering slash commands
     const commands = [];
-    for (const directory of readdirSync("./src/commands")
+    for await (const directory of readdirSync("./src/commands")
         .filter(cmd => cmd.category !== "Pengembang" && !type)) {
-        for (const file of readdirSync(`./src/commands/${diresctory}`)) {
+        for await (const file of readdirSync(`./src/commands/${diresctory}`)) {
             const command = (await import(`../commands/${directory}/${file}`)).default;
             commands.push(command.data.toJSON());
         }
