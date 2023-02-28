@@ -34,7 +34,7 @@ export default {
                 buttons.push(
                     new ButtonBuilder()
                         .setCustomId(category)
-                        .setLabel(category)
+                        .setLabel(`Kategori ${category}`)
                         .setStyle(ButtonStyle.Primary)
                 );
             });
