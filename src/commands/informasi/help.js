@@ -22,7 +22,8 @@ export default {
             const categories = readdirSync("./src/commands").filter(category => category !== "pengembang");
             embed.setTitle("Daftar Perintah")
                 .setDescription(`Prefix perintahku: \`/\`\nGunakan \`/help [nama-perintah]\` untuk info bantuan per perintah tertentu.\nMau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
-                .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }));
+                .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
+                .setFooter({ text: `Tersedia ${interaction.client.commands.filter(cmd => cmd.categroy === "Pengembang")} Perintah`});
 
             categories.forEach(category => {
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
@@ -65,7 +66,7 @@ async function createButtonInteface(interaction, message, first) {
     const filter = i => i.isButton() && i.user && i.message.author.id == interaction.client.user.id;
     const collector = await message.createMessageComponentCollector({ 
         filter,
-        time: 60000*3
+        time: 60000*5
     });
 
     var buttons = [
@@ -89,7 +90,7 @@ async function createButtonInteface(interaction, message, first) {
             .setColor(i.client.config.colors.default)
             .setTitle(`Kategori ${i.customId}`)
             .setDescription(commands.map(cmd => `\`${cmd.data.name}\` > ${cmd.data.description}.`).join("\n"))
-            .setFooter({ text: `Tersedia ${commands.size} perintah` });
+            .setFooter({ text: `Tersedia ${commands.size} Perintah` });
 
         buttons = buttons.map(
             button => {
