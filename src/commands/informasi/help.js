@@ -88,12 +88,12 @@ async function createButtonInteface(interaction, message, first) {
         const embed = new EmbedBuilder()
             .setColor(i.client.config.colors.default)
             .setTitle(`Kategori ${i.customId}`)
-            .setDescription(commands.map(cmd => `\`${cmd.data.name}\` _${cmd.data.description}_`).join("\n"))
+            .setDescription(commands.map(cmd => `\`${cmd.data.name}\` > ${cmd.data.description}.`).join("\n"))
             .setFooter({ text: `Tersedia ${commands.size} perintah` });
 
         buttons = buttons.map(
             button => {
-                if (button.data.customId === i.customId) button.setDisabled(true);
+                if (button.data.custom_id === i.customId) button.setDisabled(true);
                 return button;
             }
         );
