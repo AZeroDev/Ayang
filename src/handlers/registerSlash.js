@@ -6,15 +6,15 @@ const { ClientId, GuildId, Token } = process.env;
 export function register(type) {
     // registering slash commands
     const commands = [];
-    readdirSync("./src/commands")
-    .filter(category => category !== "pengembang" && !type)
-    .forEach(directory => {
+    const categories = readdirSync("./src/commands").filter(category => category !== "pengembang" && !type);
+
+    for await (const directory of categories) {
         readdirSync(`./src/commands/${directory}`)
         .forEach(async file => {
             const command = (await(`../commands/${directory}/${file}`)).default;
             commands.push(command.data.toJSON());
         });
-    });
+    };
 
     console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
