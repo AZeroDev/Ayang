@@ -8,7 +8,7 @@ if (!baseApi) {
 
 import { request } from "undici";
 
-export const tebakLirik = () => {
+export const tebakLirik = async() => {
     const { statusCode, body } = await request(`${baseApi}/games/tebaklirik`).catch(console.error);
     if (statusCode === 200) return await body.json().catch(console.error);
 };
