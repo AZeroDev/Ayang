@@ -9,7 +9,7 @@ export default {
             subCommand.setName("lirik")
                 .setDescription("Main kuis tebak tebakan lirik")
         ),
-    category: "MiniGame",
+    category: "Kuis",
     execute: async(interaction) => {
         const { colors } = interaction.client.config;
         const embed = new EmbedBuilder().setColor(colors.default);
@@ -20,7 +20,10 @@ export default {
             return;
         }
 
-        const waitMessage = await message.reply(`Kuis telah dimulai.\nSilahkan jawab potongan \`_____\` dari lirik berikut ini!\n(Waktu menjawab 5 menit dimulai dari sekarang...)\n\`\`\`txt\n${data.hasil.soal}\`\`\``);
+        const waitMessage = await interaction.reply({
+            content: `Kuis telah dimulai.\nSilahkan jawab potongan \`_____\` dari lirik berikut ini!\n(Waktu menjawab 5 menit dimulai dari sekarang...)\n\`\`\`txt\n${data.hasil.soal}\`\`\``,
+            fetchReply: true,
+        });
 
         const filter = (message) => {
             if (message.content.includes(data.hasil.jawaban)) return true;
