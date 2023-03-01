@@ -30,6 +30,6 @@ export default {
         ),
     category: "Permainan",
     execute: async(interaction) => {
-        await interaction.reply({ content: `${interaction.options.getSubcommandGroup().catch(console.error)} ${interaction.options.getSubcommand().catch(console.error)}`, ephemeral: true });
+        await interaction.reply({ content: `${interaction.options.getSubcommandGroup()} ${interaction.options.getSubcommand()}`, ephemeral: true });
     }
 }
