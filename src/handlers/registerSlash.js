@@ -18,6 +18,7 @@ export async function register(type) {
 
     switch(type) {
         case "guild":
+            guild([])
             guild(commands);
             break;
         default:
