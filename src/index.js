@@ -14,7 +14,15 @@ client.config = config;
 
 // reload handler
 ["commands", "events", "database"]
-.forEach(async file => (await import(`./handlers/${file}.js`)).handler(client));
+.forEach(
+    async fileName => (await import(`./handlers/${fileName}.js`)).handler(client)
+);
+
+// preload functions and check readiness for use
+["miniGame"]
+.forEach(
+    async fileName => import(`./functions/${fileName}.js`)
+);
 
 client.login(process.env.Token);
 
