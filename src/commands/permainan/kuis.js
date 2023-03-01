@@ -3,7 +3,7 @@ import { SlashCommandBuilder } from "discord.js";
 export default {
     data: new SlashCommandBuilder()
         .setName("kuis")
-        .setDescription("Gunakan perintah ini untuk melihat semua fiturnya")
+        .setDescription("Untuk hiburan, mengasah otak, dll")
         .addSubcommandGroup(subCommandGroup =>
             subCommandGroup.setName("tebak")
                 .setDescription("Grup permainan menebak")

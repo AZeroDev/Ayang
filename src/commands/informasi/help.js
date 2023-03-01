@@ -98,7 +98,7 @@ async function createButtonInteface(interaction, message, first) {
             .setTitle(`Kategori ${i.customId}`)
             .setDescription(
                 commands.map(
-                    cmd => `\`${cmd.data.name}\` > ${cmd.data.description}.`
+                    cmd => `\`/${cmd.data.name}\` > ${cmd.data.description}.`
                 ).join("\n")
             )
             .setFooter({ text: `Tersedia ${commands.size} Perintah` });
