@@ -29,13 +29,7 @@ export default {
                 const commandList = interaction.client.commands
                     .filter(cmd => cmd.category.toLowerCase() === category)
                     .map(
-                        cmd => cmd.data.options.find(opt => opt.type === 1)
-                        ? `${cmd.data.options
-                            .filter(opt => opt.type === 1)
-                            .map(
-                                subCmd => `\`${cmd.data.name} ${subCmd.name}\``
-                            ).join(", ")}`
-                        : `\`${cmd.data.name}\``
+                        cmd => `\`${cmd.data.name}\``
                     );
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
                 embed.addFields(
@@ -98,23 +92,13 @@ async function createButtonInteface(interaction, message, first) {
         }
 
         const commands = i.client.commands.filter(cmd => cmd.category === i.customId);
-        if (commands.find(cmd => cmd.data.options.find(opt => opt.type === 1))) {
-            commands.size = commands.filter(
-                cmd => cmd.data.options.filter(opt => opt.type === 1)
-            ).size;
-        }
+
         const embed = new EmbedBuilder()
             .setColor(i.client.config.colors.default)
             .setTitle(`Kategori ${i.customId}`)
             .setDescription(
                 commands.map(
-                    cmd => cmd.data.options.find(opt => opt.type === 1)
-                    ? `${cmd.data.options
-                        .filter(opt => opt.type === 1)
-                        .map(
-                            subCmd => `\`${cmd.data.name} ${subCmd.name}\``
-                        ).join("\n")}`
-                    : `\`${cmd.data.name}\` > ${cmd.data.description}.`
+                    cmd => `\`${cmd.data.name}\` > ${cmd.data.description}.`
                 ).join("\n")
             )
             .setFooter({ text: `Tersedia ${commands.size} Perintah` });
