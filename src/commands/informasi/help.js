@@ -7,7 +7,7 @@ export default {
         .setDescription("Menampilkan informasi bantuan perintah bot")
         .addStringOption(option =>
             option.setName("nama-perintah")
-                .setDescription("Info bantuan per perintah tertentu")
+                .setDescription("Menampilkan detail per perintah tertentu")
                 .setAutocomplete(true)
         ),
     category: "Informasi",
@@ -23,7 +23,7 @@ export default {
             embed.setTitle("Daftar Perintah")
                 .setDescription(`Prefix perintahku: \`/\`\nGunakan \`/help [nama-perintah]\` untuk info bantuan per perintah tertentu.\nMau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
                 .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
-                .setFooter({ text: `Tersedia ${interaction.client.commands.filter(cmd => cmd.category !== "Pengembang").size} Perintah`});
+                .setFooter({ text: `Gunakan tombol dibawah untuk menampilkan detail perintah per kategori` });
 
             categories.forEach(category => {
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
@@ -63,10 +63,11 @@ export default {
 }
 
 async function createButtonInteface(interaction, message, first) {
+    const timeout = 1000 * 60 * 5;
     const filter = i => i.isButton() && i.user && i.message.author.id == interaction.client.user.id;
     const collector = await message.createMessageComponentCollector({ 
         filter,
-        time: 60000*5
+        time: timeout,
     });
 
     var buttons = [
@@ -102,6 +103,7 @@ async function createButtonInteface(interaction, message, first) {
         const action = new ActionRowBuilder().addComponents(...buttons);
 
         await i.editReply({ embeds: [embed], components: [action] });
+        i.resetTimer({ time: timeout });
     });
     collector.on("end", () => {
         if (!message) return;

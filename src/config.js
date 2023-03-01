@@ -5,5 +5,6 @@ export const config = {
         success: "#57F287",
     },
     inviteLink: "https://discord.com/api/oauth2/authorize",
-    serverLink: "https://discord.gg/"
+    serverLink: "https://discord.gg/",
+    websiteLink: "https://domain.tld",
 }
