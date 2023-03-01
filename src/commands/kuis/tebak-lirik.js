@@ -14,7 +14,7 @@ export default {
         const { colors } = interaction.client.config;
         const embed = new EmbedBuilder().setColor(colors.default);
 
-        const data = tebakLirik();
+        const data = await tebakLirik();
         if (!data) {
             console.log("Data tidak tersedia!");
             return;
