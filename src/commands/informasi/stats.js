@@ -33,7 +33,7 @@ export default {
                 { name: "Pengguna", value: (interaction.client.guilds.cache.reduce((members, guild) => members + guild.memberCount, 0)).toLocaleString().replaceAll(",", "."), inline: true }
             ])
             .addFields({ name: "Waktu Aktif", value: `<t:${int(interaction.client.readyTimestamp)}> (<t:${int(interaction.client.readyTimestamp)}:R>)`})
-            .setFooter({ text: `2023 ${interaction.client.username} Bot` })
+            .setFooter({ text: `2023 ${interaction.client.user.username} Bot` })
             .setTimestamp();
 
         await interaction.editReply({ embeds: [embed] });
