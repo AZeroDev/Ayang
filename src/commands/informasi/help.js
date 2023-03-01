@@ -103,8 +103,9 @@ async function createButtonInteface(interaction, message, first) {
         const action = new ActionRowBuilder().addComponents(...buttons);
 
         await i.editReply({ embeds: [embed], components: [action] });
-        i.resetTimer({ time: timeout });
+        collector.resetTimer({ time: timeout });
     });
+
     collector.on("end", () => {
         if (!message) return;
         const buttons = first.buttons.map(button => button.setStyle(ButtonStyle.Secondary).setDisabled(true));
