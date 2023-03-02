@@ -50,7 +50,7 @@ export default {
             subCommand.setName("family100")
                 .setDescription("Pertanyaan acak Family 100 (Wajib Mabar)")
                 .addUserOption(userOption =>
-                    userOption.setName("pilih-peserta")
+                    userOption.setName("peserta")
                         .setDescription("Silahkan pilih teman/keluarga kamu untuk mengikuti kuis Family 100")
                         .setRequired(true)
                 )
