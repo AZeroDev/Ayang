@@ -9,27 +9,58 @@ export default {
                 .setDescription("Grup permainan menebak")
                 .addSubcommand(subCommand =>
                     subCommand.setName("gambar")
-                        .setDescription("Main tebak gambar")
+                        .setDescription("Tebak gambar acak")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("lirik")
-                        .setDescription("Main tebak lirik")
+                        .setDescription("Tebak lirik acak")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("kata")
-                        .setDescription("Main tebak kata")
+                        .setDescription("Tebak kata acak")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("kalimat")
-                        .setDescription("Main tebak kalimat")
+                        .setDescription("Tebak kalimat acak")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("tebakan")
-                        .setDescription("Main tebak tebakan")
+                        .setDescription("Tebak tebakan acak")
                 )
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("asah-otak")
+                .setDescription("Pertanyaan acak untuk mengasah otak")
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("cak-lontong")
+                .setDescription("Pertanyaan acak penuh lawak dan jawaban konyol")
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("family-100")
+                .setDescription("Pertanyaan acak dari family-100")
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("siapa-aku")
+                .setDescription("Pertanyaan acak menebak siapa aku")
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("susun-kata")
+                .setDescription("Pertanyaan acak untuk menyusun kata")
+        )
+        .addSubcommand(subCommand =>
+            subCommand.setName("teka-teki")
+                .setDescription("Pertanyaan acak penuh dengan teka teki")
         ),
     category: "Permainan",
     execute: async(interaction) => {
-        await interaction.reply({ content: `${interaction.options.getSubcommandGroup()} ${interaction.options.getSubcommand()}`, ephemeral: true });
+        let command = `/${interaction.commandName}`
+        try {
+            command += ' '+interaction.options.getSubcommandGroup();
+        } catch(e) {
+            command += ' '+interaction.options.getSubcommand();
+        }
+
+        await interaction.reply({ content: command, ephemeral: true });
     }
 }
