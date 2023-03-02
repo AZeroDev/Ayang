@@ -49,7 +49,7 @@ export const standar = async(interaction, key) => {
         await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed], components: [action] });
         const message = await interaction.fetchReply();
 
-        const cfilter = i => i.isButton() && i.customId === "menyerah" && i.user.id === interaction.user.id && i.user.bot;
+        const cfilter = i => i.isButton() && i.customId === "menyerah" && i.user.id === interaction.user.id && !i.user.bot;
 
         const collector = await message.createMessageComponentCollector({ filter: cfilter });
         collector.on("collect", i => {
@@ -58,7 +58,7 @@ export const standar = async(interaction, key) => {
             return;
         })
         .on("end", () => {
-            const newAction = new ActionRowBuilder().addComponents(buttons[0].setDisabled(true));
+            const newAction = new ActionRowBuilder().addComponents(buttons[0].setStyle(ButtonStyle.Secondary).setDisabled(true));
             if (message) message.edit({ components: [newAction] }).catch(_ => void 0);
         });
 
