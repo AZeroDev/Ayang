@@ -24,8 +24,8 @@ export const standar = async(interaction, key) => {
         embed.setTitle("Pertanyaan:")
             .setDescription(data.hasil.soal)
             .setFooter({ text: `Waktu menjawab pertanyaan adalah ${timeout} detik` });
-        if (data.hasil.tipe) {
-            embed.setDescription(`Tipe: \`${data.tipe}\`\n\n${embed.data.description}`);
+        if (key === "susun-kata") {
+                embed.setDescription(`Susun Kata berikut ini menjadi sebuah kalimat yang benar!\`\`\`txt\n${embed.data.description}\`\`\`\n\nTipe: **${data.hasil.tipe}**`)
         }
 
         await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed] });
@@ -34,10 +34,7 @@ export const standar = async(interaction, key) => {
         const filter = (respon) => data.hasil.jawaban.toLowerCase() === respon.content.toLowerCase();
         interaction.channel.awaitMessages({ filter, time: 1000 * timeout, max: 1 }).then(collect => {
             collect = collect.first();
-            embed.setColor(colors.success)
-                .setDescription(`✅ Jawaban benar.`)
-                .setFooter({ text: null });
-            collect.reply({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 10000));
+            collect.react("✅");
 
             embed.setAuthor({ name: collect.author.tag, iconURL: collect.author.displayAvatarURL({ dynamic: true }) })
                 .setTitle("Selamat!")
