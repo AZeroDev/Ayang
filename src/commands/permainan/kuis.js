@@ -54,11 +54,12 @@ export default {
         ),
     category: "Permainan",
     execute: async(interaction) => {
-        let command = `/${interaction.commandName}`
-        try {
-            command = command+' '+interaction.options.getSubcommandGroup();
-        } catch(e) {
-            command = command+' '+interaction.options.getSubcommand();
+        let command = `/${interaction.commandName}`;
+        if (interaction.options.getSubcommandGroup()) {
+            command += ' '+interaction.options.getSubcommandGroup();
+        }
+        if (interaction.options.getSubcommand()) {
+            command += ' '+interaction.options.addSubcommand();
         }
 
         await interaction.reply({ content: command, ephemeral: true });
