@@ -12,9 +12,9 @@ import { request } from "undici";
 const thumb = {
     "cak-lontong": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjAV2VhXZmx01YRWEKrWPztxuzfhlj9Fmo2g&usqp=CAU",
     "susun-kata": "https://lh5.ggpht.com/vVO4K-_Twdr5k4bh5b7OodirrEmCHZiCe_lst_dSpjN6isto-2duz9TLEHRT6JXy7w",
-    "teka-teki": "https://play-lh.googleusercontent.com/lTp3jGmxjNGggP_IOB7iWCUfDt2u-krASNXbCwCstKEAMyv8sxXTyhMlhqzxw0VQck0",
+    "teka-teki": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6qWw5pid4y7fmuODBxwvfs0WYg0LK-EKe2w&usqp=CAU",
     "asah-otak": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOag4_5xNd4yJYwWMCTzSd_hulKNk571awpA&usqp=CAU",
-    "siapa-aku": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtsCAa7xohDdTFkssoY3dfwkYbxkg8c5--LA&usqp=CAU",
+    "siapa-aku": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQehh3CYKBlK2WAla6ZV7nH8pD3-fdj9Q_cLw&usqp=CAU",
 }
 
 export const standar = async(interaction, key) => {
@@ -53,8 +53,9 @@ export const standar = async(interaction, key) => {
 
         const collector = await message.createMessageComponentCollector({ filter: cfilter });
         collector.on("collect", i => {
-            i.deferReply();
+            i.deferUpdate();
             collector.stop();
+            return;
         })
         .on("end", () => {
             const newAction = new ActionRowBuilder().addComponents(buttons[0].setDisabled(true));
