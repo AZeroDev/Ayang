@@ -56,9 +56,9 @@ export default {
     execute: async(interaction) => {
         let command = `/${interaction.commandName}`
         try {
-            command += ' '+interaction.options.getSubcommandGroup();
+            command = command+' '+interaction.options.getSubcommandGroup();
         } catch(e) {
-            command += ' '+interaction.options.getSubcommand();
+            command = command+' '+interaction.options.getSubcommand();
         }
 
         await interaction.reply({ content: command, ephemeral: true });
