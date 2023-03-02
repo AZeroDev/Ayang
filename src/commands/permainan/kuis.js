@@ -9,23 +9,23 @@ export default {
                 .setDescription("Grup permainan menebak")
                 .addSubcommand(subCommand =>
                     subCommand.setName("gambar")
-                        .setDescription("Tebak gambar")
+                        .setDescription("Main tebak gambar")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("lirik")
-                        .setDescription("Tebak lirik")
+                        .setDescription("Main tebak lirik")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("kata")
-                        .setDescription("Tebak kata")
+                        .setDescription("Main tebak kata")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("kalimat")
-                        .setDescription("Tebak kalimat")
+                        .setDescription("Main tebak kalimat")
                 )
                 .addSubcommand(subCommand =>
                     subCommand.setName("tebakan")
-                        .setDescription("Tebak tebakan")
+                        .setDescription("Main tebak tebakan")
                 )
         ),
     category: "Permainan",
