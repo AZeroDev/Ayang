@@ -117,6 +117,6 @@ async function createButtonInteface(interaction, message, first) {
         const buttons = first.buttons.map(button => button.setStyle(ButtonStyle.Secondary).setDisabled(true));
         const action = new ActionRowBuilder().addComponents(...buttons);
 
-        message.edit({ embeds: [first.embed.setFooter({ text: null })], components: [action] }).catch(o_O => void 0);
+        message.edit({ embeds: [first.embed.setFooter({ text: "Tip: Pakai /kuis untuk hiburan, mabar kuis sama teman discord kamu biar lebih seru." })], components: [action] }).catch(o_O => void 0);
     });
 }
