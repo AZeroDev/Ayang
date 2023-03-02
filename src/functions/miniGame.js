@@ -76,7 +76,8 @@ export const standar = async(interaction, key) => {
             collect = collect.first();
             collect.react("✅");
 
-            embed.setAuthor({ name: collect.author.tag, iconURL: collect.author.displayAvatarURL({ dynamic: true }) })
+            embed.setColor(colors.success)
+                .setAuthor({ name: collect.author.tag, iconURL: collect.author.displayAvatarURL({ dynamic: true }) })
                 .setTitle("Selamat!")
                 .setDescription(`${userFollowed.length > 1 ? `Pemenangnya adalah ${collect.author}\n\n` : ''}Telah berhasil menjawab pertanyaan: **${data.hasil.soal}**`)
                 .setFooter({ text: `Jawaban: ${data.hasil.jawaban}` });
