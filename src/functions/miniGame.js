@@ -9,6 +9,14 @@ if (!baseApi) {
 import { ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } from "discord.js";
 import { request } from "undici";
 
+const thumb = {
+    "cak-lontong": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjAV2VhXZmx01YRWEKrWPztxuzfhlj9Fmo2g&usqp=CAU",
+    "susun-kata": "https://lh5.ggpht.com/vVO4K-_Twdr5k4bh5b7OodirrEmCHZiCe_lst_dSpjN6isto-2duz9TLEHRT6JXy7w",
+    "teka-teki": "https://play-lh.googleusercontent.com/lTp3jGmxjNGggP_IOB7iWCUfDt2u-krASNXbCwCstKEAMyv8sxXTyhMlhqzxw0VQck0",
+    "asah-otak": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOag4_5xNd4yJYwWMCTzSd_hulKNk571awpA&usqp=CAU",
+    "siapa-aku": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtsCAa7xohDdTFkssoY3dfwkYbxkg8c5--LA&usqp=CAU",
+}
+
 export const standar = async(interaction, key) => {
     let timeout = 30;
     let userFollowed = [];
@@ -31,6 +39,7 @@ export const standar = async(interaction, key) => {
         const action = new ActionRowBuilder().addComponents(...buttons);
         embed.setTitle("Pertanyaan:")
             .setDescription(data.hasil.soal)
+            .setThumbnail(thumb[key])
             .setFooter({ text: `Waktu menjawab pertanyaan adalah ${timeout} detik` });
 
         if (key === "susun-kata") {

@@ -57,7 +57,7 @@ export default {
         )
         .addSubcommand(subCommand =>
             subCommand.setName("siapa-aku")
-                .setDescription("Pertanyaan acak menebak siapa aku")
+                .setDescription("Pertanyaan acak menebak siapakah aku")
         )
         .addSubcommand(subCommand =>
             subCommand.setName("susun-kata")
