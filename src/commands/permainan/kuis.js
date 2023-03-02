@@ -1,5 +1,14 @@
 import { SlashCommandBuilder } from "discord.js";
 
+import {
+    standar,
+    tebakGambar,
+    tebakKalimat,
+    tebakKata,
+    tebakLirik,
+    tebakTebakan,
+} from "../../functions/miniGame.js";
+
 export default {
     data: new SlashCommandBuilder()
         .setName("kuis")
@@ -54,14 +63,40 @@ export default {
         ),
     category: "Permainan",
     execute: async(interaction) => {
-        let command = `/${interaction.commandName}`;
-        if (interaction.options.getSubcommandGroup()) {
-            command += ' '+interaction.options.getSubcommandGroup();
-        }
-        if (interaction.options.getSubcommand()) {
-            command += ' '+interaction.options.getSubcommand();
-        }
+        const subCommand = interaction.options.getSubcommand();
+        const subCommandGroup = interaction.options.getSubcommandGroup();
 
-        await interaction.reply({ content: command, ephemeral: true });
+        if (subCommandGroup === "tebak") {
+            kuisTebak(interaction, subCommandGroup);
+            return;
+        }
+        else if (subCommand) {
+            kuis(interaction, subCommand);
+            return;
+        }
+    }
+}
+
+function kuis(i, sub) {
+    standar(i, sub);
+}
+
+function kuisTebak(i, sub) {
+    switch(sub) {
+        case "gambar":
+            tebakGambar(i);
+            break;
+        case "kalimat":
+            tebakKalimat(i);
+            break;
+        case "kata":
+            tebakKata(i);
+            break;
+        case "lirik":
+            tebakLirik(i);
+            break;
+        case "tebakan":
+            tebakTebakan(i);
+            break;
     }
 }
