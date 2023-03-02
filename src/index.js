@@ -1,6 +1,11 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+    ]
+});
 
 // client ecounters an error
 client.on("error", error => console.error(error));
