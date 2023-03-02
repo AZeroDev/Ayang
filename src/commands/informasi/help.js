@@ -23,7 +23,7 @@ export default {
             embed.setTitle("Daftar Perintah")
                 .setDescription(`Prefix perintahku: \`/\`\nGunakan \`/help [nama-perintah]\` untuk info bantuan per perintah tertentu.\nMau bantuan lebih lanjut? gabung [Server Dukungan](${serverLink})`)
                 .setThumbnail(interaction.guild.iconURL({ dynamic: true, size: 512 }))
-                .setFooter({ text: `Gunakan tombol dibawah untuk menampilkan detail perintah per kategori` });
+                .setFooter({ text: `Gunakan tombol dibawah untuk menampilkan detail perintah per kategori.` });
 
             categories.forEach(category => {
                 const commandList = interaction.client.commands
