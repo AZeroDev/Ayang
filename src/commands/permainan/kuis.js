@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from "discord.js";
 
 import {
     standar,
+    family100,
     tebakGambar,
     tebakKalimat,
     tebakKata,
@@ -46,8 +47,13 @@ export default {
                 .setDescription("Pertanyaan acak penuh lawak dan jawaban konyol")
         )
         .addSubcommand(subCommand =>
-            subCommand.setName("family-100")
-                .setDescription("Pertanyaan acak dari family-100")
+            subCommand.setName("family100")
+                .setDescription("Pertanyaan acak Family 100 (Wajib Mabar)")
+                .addUserOption(userOption =>
+                    userOption.setName("pilih-peserta")
+                        .setDesription("Silahkan pilih teman/keluarga kamu untuk mengikuti kuis Family 100")
+                        .setRequired(true)
+                )
         )
         .addSubcommand(subCommand =>
             subCommand.setName("siapa-aku")
@@ -78,7 +84,12 @@ export default {
 }
 
 function kuis(i, sub) {
-    standar(i, sub);
+    if (sub === "family100") {
+        family100(i);
+    }
+    else {
+        standar(i, sub);
+    }
 }
 
 function kuisTebak(i, sub) {

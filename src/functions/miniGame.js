@@ -11,6 +11,7 @@ import { request } from "undici";
 
 export const standar = async(interaction, key) => {
     let timeout = 30;
+    let userFollowed = [];
 
     const { colors } = interaction.client.config;
     const embed = new EmbedBuilder().setColor(colors.default);
@@ -31,21 +32,35 @@ export const standar = async(interaction, key) => {
         await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed] });
         const message = await interaction.fetchReply();
 
-        const filter = (respon) => data.hasil.jawaban.toLowerCase() === respon.content.toLowerCase();
+        const filter = (respon) => {
+            if (!respon.author.bot && !userFollowed.find(user => user === respon.author)) {
+                userFollowed.push(respon.author);
+            }
+            return data.hasil.jawaban.toLowerCase() === respon.content.toLowerCase();
+        }
         interaction.channel.awaitMessages({ filter, time: 1000 * timeout, max: 1 }).then(collect => {
             collect = collect.first();
             collect.react("✅");
 
             embed.setAuthor({ name: collect.author.tag, iconURL: collect.author.displayAvatarURL({ dynamic: true }) })
                 .setTitle("Selamat!")
-                .setDescription(`Pemenangnya adalah ${collect.author}\n\nTelah berhasil menjawab pertanyaan: **${data.hasil.soal}**`)
+                .setDescription(`${userFollowed.length > 1 ? `Pemenangnya adalah ${collect.author}\n\n` : ''}Telah berhasil menjawab pertanyaan: **${data.hasil.soal}**`)
                 .setFooter({ text: `Jawaban: ${data.hasil.jawaban}` });
+            if (key === "susun-kata") {
+                embed.setDescription(`${userFollowed.length > 1 ? `Pemenangnya adalah ${collect.author}\n\n` : ''}Telah berhasil menyusun kata: **${data.hasil.soal}**`);
+            }
+            if (key === "cak-lontong") {
+                embed.setFooter({ text: `${embed.data.footer.text} | ${data.hasil.deskripsi}`})
+            }
             collect.reply({ embeds: [embed] });
         }).catch(() => {
             embed.setColor(colors.error)
                 .setTitle("Waktu Telah Habis")
                 .setDescription("Hmm... Tidak ada yang bisa menjawab?")
                 .setFooter({ text: `Jawabannya adalah ${data.hasil.jawaban}` });
+            if (key === "cak-lontong") {
+                embed.setFooter({ text: `${embed.data.footer.text} | ${data.hasil.deskripsi}`})
+            }
             message.reply({ embeds: [embed] });
         })
     }
@@ -54,6 +69,10 @@ export const standar = async(interaction, key) => {
         interaction.reply({ content: "Fungsi perintah ini sedang tidak aktif sementara! Ada kesalahan teknis.", ephemeral: true });
         return;
     }
+}
+
+export const family100 = async(interaction) => {
+    await interaction.reply({ content: "Family 100", ephemeral: true });
 }
 
 export const tebakGambar = async(interaction) => {
