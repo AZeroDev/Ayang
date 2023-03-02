@@ -28,10 +28,9 @@ export default {
             categories.forEach(category => {
                 const commandList = interaction.client.commands
                     .filter(cmd => cmd.category.toLowerCase() === category)
-                    .map(
-                        cmd => `\`${cmd.data.name}\``
-                    );
+                    .map(cmd => `\`${cmd.data.name}\``);
                 category = `${category.charAt(0).toUpperCase()}${category.slice(1)}`;
+
                 embed.addFields(
                     { name: `Kategori ${category}`, value: commandList.join(", ") }
                 )
@@ -97,9 +96,7 @@ async function createButtonInteface(interaction, message, first) {
             .setColor(i.client.config.colors.default)
             .setTitle(`Kategori ${i.customId}`)
             .setDescription(
-                commands.map(
-                    cmd => `\`/${cmd.data.name}\` > ${cmd.data.description}.`
-                ).join("\n")
+                commands.map(cmd => `\`/${cmd.data.name}\` > ${cmd.data.description}.`).join("\n")
             )
             .setFooter({ text: `Tersedia ${commands.size} Perintah` });
 
@@ -120,6 +117,6 @@ async function createButtonInteface(interaction, message, first) {
         const buttons = first.buttons.map(button => button.setStyle(ButtonStyle.Secondary).setDisabled(true));
         const action = new ActionRowBuilder().addComponents(...buttons);
 
-        message.edit({ embeds: [first.embed.setFooter({})], components: [action] }).catch(o_O => void 0);
+        message.edit({ embeds: [first.embed.setFooter({ text: '' })], components: [action] }).catch(o_O => void 0);
     });
 }
