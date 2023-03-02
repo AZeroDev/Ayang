@@ -23,12 +23,12 @@ export const standar = async(interaction, key) => {
 
     const { colors } = interaction.client.config;
     const embed = new EmbedBuilder().setColor(colors.default);
-    const buttons = [
+    /*const buttons = [
         new ButtonBuilder()
             .setCustomId("menyerah")
             .setLabel("Menyerah")
             .setStyle(ButtonStyle.Danger)
-    ];
+    ];*/
 
     try {
         const { body, statusCode } = await request(`${baseApi}/games/${key.replace("-", "")}`).catch(console.error);
@@ -36,7 +36,7 @@ export const standar = async(interaction, key) => {
 
         if (!data || statusCode !== 200) return interaction.reply({ content: "Fungsi perintah ini sedang tidak aktif sementara! Tolong hubungi developer untuk info lebih lanjut.", ephemeral: true });
 
-        const action = new ActionRowBuilder().addComponents(...buttons);
+        // const action = new ActionRowBuilder().addComponents(...buttons);
         embed.setTitle("Pertanyaan:")
             .setDescription(data.hasil.soal)
             .setThumbnail(thumb[key])
@@ -46,10 +46,14 @@ export const standar = async(interaction, key) => {
                 embed.setDescription(`Susun Kata berikut ini menjadi sebuah kalimat yang benar!\`\`\`txt\n${embed.data.description}\`\`\`\n\nTipe: **${data.hasil.tipe}**`)
         }
 
-        await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed], components: [action] });
+        await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed] });
         const message = await interaction.fetchReply();
 
-        const cfilter = i => i.isButton() && i.customId === "menyerah" && i.user.id === interaction.user.id && !i.user.bot;
+        /*const cfilter = i => {
+            if (i.isButton() && i.customId === "menyerah" && i.user.id === interaction.user.id && !i.user.bot) return true;
+            i.reply({ content: `Hanya ${interaction.user} yang dapat menggunakan ini!`, ephemeral: true });
+            return false;
+        };
 
         const collector = await message.createMessageComponentCollector({ filter: cfilter });
         collector.on("collect", i => {
@@ -60,7 +64,7 @@ export const standar = async(interaction, key) => {
         .on("end", () => {
             const newAction = new ActionRowBuilder().addComponents(buttons[0].setStyle(ButtonStyle.Secondary).setDisabled(true));
             if (message) message.edit({ components: [newAction] }).catch(_ => void 0);
-        });
+        });*/
 
         const filter = (respon) => {
             if (!respon.author.bot && !userFollowed.find(user => user === respon.author)) {
@@ -83,7 +87,7 @@ export const standar = async(interaction, key) => {
                 embed.setFooter({ text: `${embed.data.footer.text} | ${data.hasil.deskripsi}`})
             }
             collect.reply({ embeds: [embed] });
-            collector.stop();
+            // collector.stop();
         }).catch(() => {
             embed.setColor(colors.error)
                 .setTitle("Waktu Telah Habis")
@@ -93,7 +97,7 @@ export const standar = async(interaction, key) => {
                 embed.setFooter({ text: `${embed.data.footer.text} | ${data.hasil.deskripsi}`})
             }
             message.reply({ embeds: [embed] });
-            collector.stop();
+            // collector.stop();
         });
     }
     catch(error) {
