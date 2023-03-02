@@ -67,7 +67,7 @@ export default {
         const subCommandGroup = interaction.options.getSubcommandGroup();
 
         if (subCommandGroup === "tebak") {
-            kuisTebak(interaction, subCommandGroup);
+            kuisTebak(interaction, subCommand);
             return;
         }
         else if (subCommand) {

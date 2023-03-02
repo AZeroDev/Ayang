@@ -1,11 +1,15 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
 
 const client = new Client({
+    allowedMentions: {
+        parse: ["roles", "users", "everyone"],
+        repliedUser: false,
+    },
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
-    ]
+    ],
 });
 
 // client ecounters an error

@@ -24,7 +24,7 @@ export const standar = async(interaction, key) => {
         embed.setTitle("Pertanyaan:")
             .setDescription(data.hasil.soal)
             .setFooter({ text: `Waktu menjawab pertanyaan adalah ${timeout} detik` });
-        if (data.tipe) {
+        if (data.hasil.tipe) {
             embed.setDescription(`Tipe: \`${data.tipe}\`\n\n${embed.data.description}`);
         }
 
@@ -35,17 +35,19 @@ export const standar = async(interaction, key) => {
         interaction.channel.awaitMessages({ filter, time: 1000 * timeout, max: 1 }).then(collect => {
             collect = collect.first();
             embed.setColor(colors.success)
-            embed.setDescription(`✅ Jawaban benar.`)
-            collect.reply({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 5000));
+                .setDescription(`✅ Jawaban benar.`)
+                .setFooter({ text: null });
+            collect.reply({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 10000));
 
             embed.setAuthor({ name: collect.author.tag, iconURL: collect.author.displayAvatarURL({ dynamic: true }) })
                 .setTitle("Selamat!")
-                .setDescription(`Pemenangnya adalah ${collect.author}\n\nTelah berhasil menjawab pertanyaan \`${data.hasil.soal}\` dengan jawaban \`${data.hasil.jawaban}\``);
+                .setDescription(`Pemenangnya adalah ${collect.author}\n\nTelah berhasil menjawab pertanyaan: **${data.hasil.soal}**`)
+                .setFooter({ text: `Jawaban: ${data.hasil.jawaban}` });
             collect.reply({ embeds: [embed] });
         }).catch(() => {
             embed.setColor(colors.error)
                 .setTitle("Waktu Telah Habis")
-                .setDescription("Tidak ada yang bisa menjawab? :<")
+                .setDescription("Hmm... Tidak ada yang bisa menjawab?")
                 .setFooter({ text: `Jawabannya adalah ${data.hasil.jawaban}` });
             message.reply({ embeds: [embed] });
         })
