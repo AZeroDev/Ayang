@@ -59,7 +59,7 @@ export default {
             command += ' '+interaction.options.getSubcommandGroup();
         }
         if (interaction.options.getSubcommand()) {
-            command += ' '+interaction.options.addSubcommand();
+            command += ' '+interaction.options.getSubcommand();
         }
 
         await interaction.reply({ content: command, ephemeral: true });
