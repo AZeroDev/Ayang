@@ -37,7 +37,7 @@ export const standar = async(interaction, key) => {
                 embed.setDescription(`Susun Kata berikut ini menjadi sebuah kalimat yang benar!\`\`\`txt\n${embed.data.description}\`\`\`\n\nTipe: **${data.hasil.tipe}**`)
         }
 
-        await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed], component: [action] });
+        await interaction.reply({ content: "Silahkan jawab pertanyaan berikut ini!", embeds: [embed], components: [action] });
         const message = await interaction.fetchReply();
 
         const cfilter = i => i.isButton() && i.customId === "menyerah" && i.user.id === interaction.user.id && i.user.bot;
@@ -49,7 +49,7 @@ export const standar = async(interaction, key) => {
         })
         .on("end", () => {
             const newAction = new ActionRowBuilder().addComponents(buttons[0].setDisabled(true));
-            if (message) message.edit({ component: [newAction] }).catch(_ => void 0);
+            if (message) message.edit({ components: [newAction] }).catch(_ => void 0);
         });
 
         const filter = (respon) => {
