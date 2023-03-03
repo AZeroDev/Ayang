@@ -25,7 +25,7 @@ client.config = config;
 // reload handler
 ["commands", "events", "database"]
 .forEach(
-    async fileName => (await import(`./handlers/${fileName}.js`)).handler(client)
+    async fileName => (await import(`./handlers/${fileName}.js`)).load(client)
 );
 
 // preload functions and check readiness for use

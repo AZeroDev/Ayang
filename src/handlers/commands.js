@@ -1,6 +1,6 @@
 import { readdirSync } from "node:fs";
 
-export function handler(client) {
+export function load(client) {
     // commands handler
     readdirSync("./src/commands")
     .forEach(directory => {

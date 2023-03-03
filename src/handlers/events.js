@@ -1,6 +1,6 @@
 import { readdirSync } from "node:fs";
 
-export function handler(client) {
+export function load(client) {
     // events handler
     readdirSync("./src/events")
     .forEach(async file => {
