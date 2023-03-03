@@ -21,7 +21,11 @@ export default {
             try {
                 command.execute(interaction);
             } catch(error) {
-                console.error(`Kesalahan saat menjalankan '${interaction.commandName}'`, error);
+                const txt = `Kesalahan saat menjalankan '${interaction.commandName}'`;
+                embed.setTitle(txt);
+                embed.setDescription(`Harap hubungi [developer](https://discord.com/users/${process.env.DeveloperId}) segera dan laporkan ini, terima kasih.`);
+                console.log(txt, error);
+                interaction.reply({ embeds: [embed], ephemeral: true }).catch(_ => void 0);
             }
         }
         else if (interaction.isAutocomplete()) {

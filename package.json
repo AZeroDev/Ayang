@@ -1,7 +1,7 @@
 {
   "name": "ayang",
   "version": "1.0.0",
-  "description": "Sebuah bot lokal asli indonesia yang memiliki fitur global leveling, ranking, dan mini game",
+  "description": "Sebuah bot lokal asli indonesia yang memiliki fitur global leveling, ranking, dan kuis.",
   "main": "index.js",
   "type": "module",
   "dependencies": {
