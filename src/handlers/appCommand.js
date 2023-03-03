@@ -56,9 +56,17 @@ async function guild(commands) {
     return commands;
 }
 
-if (process.env.BuildSlash === "guild") {
-    register("guild");
-}
-else {
+if (process.env.BuildSlash === "global") {
     register();
 }
+else if (process.env.BuildSlash === "guild") {
+    register("guild");
+};
+
+export default {
+    builds: {
+        global,
+        guild,
+    },
+    register,
+};
