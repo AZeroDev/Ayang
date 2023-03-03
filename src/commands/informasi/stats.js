@@ -1,6 +1,6 @@
 import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 
-import package from "../../../package.json" assert { type: "json" };
+import bot from "../../../package.json" assert { type: "json" };
 
 const iStatus = {
     "online": "https://cdn.discordapp.com/emojis/689448141774389275.png",
@@ -22,7 +22,7 @@ export default {
         const embed = new EmbedBuilder()
             .setColor(colors.default)
             .setAuthor({ name: `Informasi Status`, iconURL: iStatus[interaction.client.presence.status] })
-            .setDescription(package.description)
+            .setDescription(bot.description)
             .setThumbnail(interaction.client.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .addFields([
                 { name: "ID Pengguna", value: interaction.client.user.id, inline: true },
@@ -35,7 +35,7 @@ export default {
                 { name: "Pengguna", value: (interaction.client.guilds.cache.reduce((members, guild) => members + guild.memberCount, 0)).toLocaleString().replaceAll(",", "."), inline: true }
             ])
             .addFields({ name: "Waktu Aktif", value: `<t:${int(interaction.client.readyTimestamp)}> (<t:${int(interaction.client.readyTimestamp)}:R>)`})
-            .setFooter({ text: `Versi: ${package.version} | © 2023 ${interaction.client.user.username} Bot` });
+            .setFooter({ text: `Versi: ${bot.version} | © 2023 ${interaction.client.user.username} Bot` });
 
         await interaction.editReply({ embeds: [embed] });
     }
