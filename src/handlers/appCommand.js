@@ -3,7 +3,7 @@ import { readdirSync } from "node:fs";
 
 const { ClientId, GuildId, Token } = process.env;
 
-export async function register(type) {
+async function register(type) {
     // registering slash commands
     const commands = [];
     for (const directory of readdirSync("./src/commands")
@@ -18,8 +18,7 @@ export async function register(type) {
 
     switch(type) {
         case "guild":
-            guild([])
-            guild(commands);
+            guild([]).then(() => guild(commands));
             break;
         default:
             global(commands);
@@ -39,6 +38,7 @@ async function global(commands) {
     } catch(error) {
         console.error(error);
     }
+    return commands;
 }
 
 async function guild(commands) {
@@ -53,6 +53,7 @@ async function guild(commands) {
     } catch(error) {
         console.error(error);
     }
+    return commands;
 }
 
 if (process.env.BuildSlash === "guild") {
