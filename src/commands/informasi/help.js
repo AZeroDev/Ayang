@@ -59,7 +59,7 @@ export default {
                 .setTitle(`Kategori: ${command.category}`)
                 .setDescription(command.data.description);
 
-            interaction.reply({ embeds: [embed] });
+            interaction.reply({ embeds: [embed], ephemeral: true });
             return;
         }
     }
