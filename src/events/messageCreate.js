@@ -7,7 +7,7 @@ export default{
     execute: async(client, message) => {
         if (message.author.bot) return;
 
-        const randomXp = Math.floor(Math.random() * 29) + 1;
+        const randomXp = Math.floor(Math.random() * 99) + 1;
         const levelUp = await Level.appendXp(message.author.id, "global", randomXp);
         if (levelUp) {
             const user = await Level.fetch(message.author.id, "global");

@@ -116,7 +116,7 @@ class FernaLeveling {
         
         if (user.dailyXp <= user.dailyXpLimit) {
         user.level += parseInt(levelings, 10);
-        user.xp = user.level * user.level * defaultXp;
+        user.xp = user.level * validate(user.level) * defaultXp;
         user.dailyXp = user.xp;
         user.lastUpdated = new Date();
  
@@ -169,7 +169,7 @@ class FernaLeveling {
         if (user.dailyXp <= user.dailyXpLimit) {
         const oldLevel = user.level;
         user.level = level;
-        user.xp = level * level * defaultXp;
+        user.xp = level * validate(level) * defaultXp;
         user.dailyXp = user.xp;
         user.lastUpdated = new Date();
         
@@ -202,7 +202,7 @@ class FernaLeveling {
             user.position = leaderboard.findIndex(i => i.userId === userId) + 1;
         }
 
-        user.cleanXp = user.xp - this.xpFor(user.level);
+        user.cleanXp = this.xpFor(user.level) - user.xp;
         user.cleanNextLevelXp = this.xpFor(user.level + 1) - this.xpFor(user.level);
         
         return user;
@@ -247,7 +247,7 @@ class FernaLeveling {
         if (!user) return false;
 
         user.level -= levelings;
-        user.xp = user.level * user.level * defaultXp;
+        user.xp = user.level * validate(user.level) * defaultXp;
         user.lastUpdated = new Date();
         
         user.save().catch(e => console.log(`Failed to subtract leveling: ${e}`) );
