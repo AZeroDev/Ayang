@@ -79,6 +79,7 @@ class FernaLeveling {
                 userId,
                 guildId,
                 xp,
+                dailyXp: xp,
                 level: Math.floor(0.1 * Math.sqrt(xp))
             });
 
@@ -87,11 +88,14 @@ class FernaLeveling {
             return (Math.floor(0.1 * Math.sqrt(xp)) > 0);
         };
 
-        user.xp += parseInt(xp, 10);
-        user.level = Math.floor(0.1 * Math.sqrt(user.xp));
-        user.lastUpdated = new Date();
+        if (user.dailyXp <= user.dailyXpLimit) {
+            user.xp += parseInt(xp, 10);
+            user.dailyXp = user.xp;
+            user.level = Math.floor(0.1 * Math.sqrt(user.xp));
+            user.lastUpdated = new Date();
  
-        await user.save().catch(e => console.log(`Failed to append xp: ${e}`) );
+            await user.save().catch(e => console.log(`Failed to append xp: ${e}`) );
+        }
 
         return (Math.floor(0.1 * Math.sqrt(user.xp -= xp)) < user.level);
     }
@@ -110,11 +114,14 @@ class FernaLeveling {
         const user = await leveling.findOne({ userId, guildId });
         if (!user) return false;
         
+        if (user.dailyXp <= user.dailyXpLimit) {
         user.level += parseInt(levelings, 10);
         user.xp = user.level * user.level * defaultXp;
+        user.dailyXp = user.xp;
         user.lastUpdated = new Date();
  
         user.save().catch(e => console.log(`Failed to append level: ${e}`) );
+        };
 
         return user;
     }
@@ -133,11 +140,14 @@ class FernaLeveling {
         const user = await leveling.findOne({ userId, guildId });
         if (!user) return false;
 
+        if (user.dailyXp <= user.dailyXpLimit){
         user.xp = xp;
+        user.dailyXp = user.xp;
         user.level = Math.floor(0.1 * Math.sqrt(user.xp));
         user.lastUpdated = new Date();
     
         user.save().catch(e => console.log(`Failed to set xp: ${e}`) );
+        }
 
         return user;
     }
@@ -156,12 +166,15 @@ class FernaLeveling {
         const user = await leveling.findOne({ userId, guildId });
         if (!user) return false;
 
+        if (user.dailyXp <= user.dailyXpLimit) {
         const oldLevel = user.level;
         user.level = level;
         user.xp = level * level * defaultXp;
+        user.dailyXp = user.xp;
         user.lastUpdated = new Date();
         
         user.save().catch(e => console.log(`Failed to set level: ${e}`) );
+        };
 
         return user;
     }
@@ -210,6 +223,7 @@ class FernaLeveling {
         if (!user) return false;
 
         user.xp -= xp;
+        user.dailyXp = user.xp;
         user.level = Math.floor(0.1 * Math.sqrt(user.xp));
         user.lastUpdated = new Date();
      

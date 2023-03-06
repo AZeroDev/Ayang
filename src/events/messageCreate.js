@@ -15,7 +15,7 @@ export default{
                 .setColor(client.config.colors.default)
                 .setTitle("Level UP!")
                 .setThumbnail(message.author.displayAvatarURL({ dynamic:true, size: 512 }))
-                .setDescription(`Selamat! **${message.author.tag}*** telah naik **level \`${user.level}\`**.`);
+                .setDescription(`Selamat! **${message.author.tag}** telah naik **level \`${user.level}\`**.`);
             message.channel.send({ embeds: [embed] });
         }
     }
