@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const LevelingSchema = new monggose.Schema({
+const LevelingSchema = new mongoose.Schema({
     guildId: { type: String },
     userId: { type: String },
     level: { type: Number, default: 0 },
