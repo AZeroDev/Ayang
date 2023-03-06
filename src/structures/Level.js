@@ -308,7 +308,7 @@ class FernaLeveling {
     }
 }
 
-module.exports = FernaLeveling;
+export default FernaLeveling;
 
 function validate(level) {
     if (level <= 10) return 3;
