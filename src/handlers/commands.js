@@ -1,6 +1,6 @@
 const { readdirSync } = require("node:fs");
 
-module.exports = function load(client) {
+exports.load = (client) => {
     // commands handler
     readdirSync("./src/commands")
     .forEach(directory => {

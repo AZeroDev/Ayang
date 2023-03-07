@@ -1,6 +1,6 @@
 const { readdirSync } = require("node:fs");
 
-module.exports = function load(client) {
+exports.load = (client) {
     // events handler
     readdirSync("./src/events")
     .forEach(async file => {
