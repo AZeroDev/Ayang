@@ -11,6 +11,9 @@
     "node-cron": "^3.0.2",
     "undici": "^5.20.0"
   },
+  "engines": {
+    "node": "19.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
