@@ -18,7 +18,7 @@ client.on("warn", info => console.warn(info));
 
 // custom variable using the client object
 client.commands = new Collection();
-client.config = require("./config")
+client.config = require("./config");
 
 // reload handler
 ["commands", "events", "database"]
