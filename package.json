@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "@napi-rs/canvas": "^0.1.37",
+    "canvas-constructor": "^7.0.0",
     "discord.js": "^14.7.1",
     "mongoose": "^7.0.0",
     "node-cron": "^3.0.2",
