@@ -11,7 +11,8 @@ module.exports = {
                 .setRequired(true)
         ),
     category: "Pengembang",
-    execute: (interaction) => {
+    execute: async(interaction) => {
+        await interaction.deferReply();
         const { colors } = interaction.client.config;
         const command = interaction.options.getString("perintah");
         const embed = new EmbedBuilder().setColor(colors.success);
@@ -21,13 +22,15 @@ module.exports = {
             embed.setTitle(`$ ${command}`)
             embed.setDescription(`\`\`\`shell\n${_execute}\`\`\``);
 
-            interaction.reply({ embeds: [embed] });
+            await interaction.editReply({ embeds: [embed] });
+            return;
         }
         catch(error) {
             embed.setColor(colors.error);
             embed.setDescription(`Tidak dapat menjalankan perintah \`$ ${command}\`, karena \`${error.message}\`.`);
 
-            interaction.reply({ embeds: [embed], ephemeral: true });
+            await interaction.editReply({ embeds: [embed], ephemeral: true });
+            return;
         }
     }
 }
