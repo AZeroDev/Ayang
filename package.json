@@ -12,7 +12,7 @@
     "undici": "^5.20.0"
   },
   "engines": {
-    "node": "19.x"
+    "node": ">=18.x"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
