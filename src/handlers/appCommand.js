@@ -1,5 +1,5 @@
-import { REST, Routes } from "discord.js";
-import { readdirSync } from "node:fs";
+const { REST, Routes } = require("discord.js");
+const { readdirSync } = require("node:fs");
 
 const { ClientId, GuildId, Token } = process.env;
 
@@ -9,7 +9,7 @@ async function register(type) {
     for (const directory of readdirSync("./src/commands")
         .filter(cmd => type === "guild" ? cmd : cmd.category !== "Pengembang")) {
         for (const file of readdirSync(`./src/commands/${directory}`)) {
-            const command = (await import(`../commands/${directory}/${file}`)).default;
+            const command = require(`../commands/${directory}/${file}`);
             commands.push(command.data.toJSON());
         }
     };
@@ -63,7 +63,7 @@ else if (process.env.BuildSlash === "guild") {
     register("guild");
 };
 
-export default {
+module.exports = {
     builds: {
         global,
         guild,

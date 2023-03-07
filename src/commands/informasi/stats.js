@@ -1,6 +1,6 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 
-import bot from "../../../package.json" assert { type: "json" };
+const bot = require("../../../package.json");
 
 const iStatus = {
     "online": "https://cdn.discordapp.com/emojis/689448141774389275.png",
@@ -9,7 +9,7 @@ const iStatus = {
     "invisible": "https://cdn.discordapp.com/emojis/695461329800134696.png"
 };
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName("stats")
         .setDescription("Menampilkan informasi status"),

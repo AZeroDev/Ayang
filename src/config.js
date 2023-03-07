@@ -1,4 +1,4 @@
-export const config = {
+const config = {
     colors: {
         default: "#84ADEF",
         error: "#ED4245",
@@ -7,4 +7,6 @@ export const config = {
     inviteLink: "https://discord.com/api/oauth2/authorize",
     serverLink: "https://discord.gg/",
     websiteLink: "https://domain.tld",
-}
+};
+
+module.exports = config;

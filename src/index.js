@@ -1,4 +1,4 @@
-import { Client, Collection, GatewayIntentBits } from "discord.js";
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 
 const client = new Client({
     allowedMentions: {
@@ -16,24 +16,22 @@ const client = new Client({
 client.on("error", error => console.error(error));
 client.on("warn", info => console.warn(info));
 
-import { config } from "./config.js";
-
 // custom variable using the client object
 client.commands = new Collection();
-client.config = config;
+client.config = require("./config")
 
 // reload handler
 ["commands", "events", "database"]
 .forEach(
-    async fileName => (await import(`./handlers/${fileName}.js`)).load(client)
+    fileName => require(`./handlers/${fileName}.js`).load(client)
 );
 
 // preload functions and check readiness for use
 ["miniGame"]
 .forEach(
-    async fileName => import(`./functions/${fileName}.js`)
+    fileName => require(`./functions/${fileName}.js`)
 );
 
 client.login(process.env.Token);
 
-export default client;
+module.exports = client;

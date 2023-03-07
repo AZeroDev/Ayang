@@ -1,8 +1,8 @@
-import { Events, EmbedBuilder } from "discord.js";
+const { Events, EmbedBuilder } = require("discord.js");
 
-import Level from "../structures/Level.js";
+const Level = require("../structures/Level.js");
 
-export default{
+module.exports = {
     name: Events.MessageCreate,
     execute: async(client, message) => {
         if (message.author.bot) return;

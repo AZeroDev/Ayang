@@ -1,7 +1,7 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
-import { execSync } from "node:child_process";
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
+const { execSync } = require("node:child_process");
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName("exec")
         .setDescription("Menjalankan perintah shell")

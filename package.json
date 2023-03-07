@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Sebuah bot lokal asli indonesia yang memiliki fitur global leveling, ranking, dan kuis.",
   "main": "index.js",
-  "type": "module",
   "dependencies": {
     "@napi-rs/canvas": "^0.1.37",
     "canvas-constructor": "^7.0.0",

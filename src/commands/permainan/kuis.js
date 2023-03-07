@@ -1,6 +1,6 @@
-import { SlashCommandBuilder } from "discord.js";
+const { SlashCommandBuilder } = require("discord.js");
 
-import {
+const {
     standar,
     family100,
     tebakGambar,
@@ -8,9 +8,9 @@ import {
     tebakKata,
     tebakLirik,
     tebakTebakan,
-} from "../../functions/miniGame.js";
+} = require("../../functions/miniGame.js");
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName("kuis")
         .setDescription("Untuk hiburan, mengasah otak, dll")

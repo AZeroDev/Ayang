@@ -1,6 +1,6 @@
-import { Events, EmbedBuilder } from "discord.js";
+const { Events, EmbedBuilder } = require("discord.js");
 
-export default {
+module.exports = {
     name: Events.InteractionCreate,
     execute: async(client, interaction) => {
         const embed = new EmbedBuilder().setColor(client.config.colors.error);

@@ -1,8 +1,8 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 
-import { inspect } from "node:util";
+const { inspect } = require("node:util");
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName("eval")
         .setDescription("Evaluasi kode pemrograman")

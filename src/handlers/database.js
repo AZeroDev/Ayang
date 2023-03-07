@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export function load() {
+module.exports = function load() {
     mongoose.connect(process.env.MongoUri)
     .then(() => console.log("Database telah terkoneksi."))
     .catch(console.error);
-}
+};

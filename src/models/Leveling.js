@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const LevelingSchema = new mongoose.Schema({
     guildId: { type: String, default: "global" },
@@ -10,4 +10,4 @@ const LevelingSchema = new mongoose.Schema({
     lastUpdated: { type: Date, default: new Date() }
 });
 
-export default mongoose.model("Leveling", LevelingSchema);
+module.exports = mongoose.model("Leveling", LevelingSchema);

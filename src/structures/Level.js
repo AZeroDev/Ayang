@@ -1,4 +1,4 @@
-import leveling from "../models/Leveling.js";
+const leveling = require("../models/Leveling.js");
 
 const defaultXp = 456;
 
@@ -322,7 +322,7 @@ class FernaLeveling {
     }
 }
 
-export default FernaLeveling;
+module.exports = FernaLeveling;
 
 function validate(level) {
     if (level <= 10) return 3;

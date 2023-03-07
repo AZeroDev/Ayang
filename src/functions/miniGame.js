@@ -6,8 +6,8 @@ if (!baseApi) {
     );
 }
 
-import { ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } from "discord.js";
-import { request } from "undici";
+const { ActionRowBuilder, ButtonStyle, ButtonBuilder, EmbedBuilder } = require("discord.js");
+const { request } = require("undici");
 
 const thumb = {
     "cak-lontong": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjAV2VhXZmx01YRWEKrWPztxuzfhlj9Fmo2g&usqp=CAU",
@@ -17,7 +17,7 @@ const thumb = {
     "siapa-aku": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQehh3CYKBlK2WAla6ZV7nH8pD3-fdj9Q_cLw&usqp=CAU",
 }
 
-export const standar = async(interaction, key) => {
+exports.standar = async(interaction, key) => {
     let timeout = 30;
     let userFollowed = [];
 
@@ -108,26 +108,26 @@ export const standar = async(interaction, key) => {
     }
 }
 
-export const family100 = async(interaction) => {
+exports.family100 = async(interaction) => {
     await interaction.reply({ content: "Family 100", ephemeral: true });
 }
 
-export const tebakGambar = async(interaction) => {
+exports.tebakGambar = async(interaction) => {
     await interaction.reply({ content: "Tebak Gambar", ephemeral: true });
 };
 
-export const tebakKalimat = async(interaction) => {
+exports.tebakKalimat = async(interaction) => {
     await interaction.reply({ content: "Tebak Kalimat", ephemeral: true });
 };
 
-export const tebakKata = async(interaction) => {
+exports.tebakKata = async(interaction) => {
     await interaction.reply({ content: "Tebak Kata", ephemeral: true });
 };
 
-export const tebakLirik = async(interaction) => {
+exports.tebakLirik = async(interaction) => {
     await interaction.reply({ content: "Tebak Lirik", ephemeral: true });
 };
 
-export const tebakTebakan = async(interaction) => {
+exports.tebakTebakan = async(interaction) => {
     await interaction.reply({ content: "Tebak Tebakan", ephemeral: true });
 };

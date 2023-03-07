@@ -1,7 +1,7 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder } from "discord.js";
-import { readdirSync } from "node:fs";
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
+const { readdirSync } = require("node:fs");
 
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName("help")
         .setDescription("Menampilkan informasi bantuan perintah bot")
