@@ -81,7 +81,7 @@ export async function create(interaction) {
         .png();
 
     await interaction.channel.send({
-        file: [
+        files: [
             { attachment: canvas, name: `${user.tag}-card.png` }
         ]
     });
