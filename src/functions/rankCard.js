@@ -4,7 +4,10 @@ export async function create(interaction) {
     if (!interaction || typeof interaction !== "object") throw new Error("at here!");
     if (!interaction.deferred) {
         await interaction.deferReply();
-    };
+    }
+    else {
+        await interaction.editReply("Sedang proses membuat Kartu Rank...");
+    }
 
     const user = interaction.user;
     const data = {};
@@ -63,10 +66,10 @@ export async function create(interaction) {
             .printText(profile.level, canvas.measureText(`RANK #${profile.rank} LEVEL`) + 280 + 20, 210)
 
             // Xp
-            .printText("XP:", width - ctx.measureText(`${profile.xp.current} / ${profile.xp.target}`).width - 5, 210)
-            .printText(profile.xp.current, canvas.measureText("XP:").width + ctx.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
-            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + ctx.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
-            .printText(profile.xp.next, canvas.measureText("XP: "+profile.xp.current+" /").width + ctx.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
+            .printText("XP:", width - canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width - 5, 210)
+            .printText(profile.xp.current, canvas.measureText("XP:").width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
+            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
+            .printText(profile.xp.next, canvas.measureText("XP: "+profile.xp.current+" /").width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
         )
         .setColor("#BCC0C0")
         .printRectangle(282, 220, 295, 10)
