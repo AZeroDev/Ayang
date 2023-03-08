@@ -1,7 +1,7 @@
 import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
 export function create(interaction) {
-    if (!options || typeof options !== "object") throw new Error();
+    if (!interaction || typeof interaction !== "object") throw new Error("at here!");
     if (!interaction.deferred) {
         await interaction.deferReply();
     };
