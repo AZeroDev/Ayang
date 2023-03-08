@@ -68,10 +68,10 @@ export async function create(interaction) {
             .printText(profile.level.toString(), canvas.measureText(`RANK #${profile.rank} LEVEL`).width + 280 + 20, 210)
 
             // Xp
-            .printText("XP:", width/1.5, 210)
-            .printText(profile.xp.current.toString(), canvas.measureText("XP:").width + width/1.5 + 5, 210)
-            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + width/1.5 + 5, 210)
-            .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width/1.5 + 5, 210)
+            .printText("XP:", 590, 210)
+            .printText(profile.xp.current.toString(), canvas.measureText("XP:").width + 590 + 5, 210)
+            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + 590 + 5, 210)
+            .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + 590 + 5, 210)
         )
         .setColor("#BCC0C0")
         .printRectangle(282, 220, 295, 10)
