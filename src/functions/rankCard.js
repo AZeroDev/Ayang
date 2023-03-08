@@ -65,13 +65,13 @@ export async function create(interaction) {
 
             // Level
             .printText("LEVEL", canvas.measureText("RANK #"+profile.rank).width + 280 + 20, 210)
-            .printText(profile.level, canvas.measureText(`RANK #${profile.rank} LEVEL`) + 280 + 20, 210)
+            .printText(profile.level.toString(), canvas.measureText(`RANK #${profile.rank} LEVEL`).width + 280 + 20, 210)
 
             // Xp
-            .printText("XP:", width - canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width - 5, 210)
-            .printText(profile.xp.current, canvas.measureText("XP:").width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
-            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
-            .printText(profile.xp.next, canvas.measureText("XP: "+profile.xp.current+" /").width + canvas.measureText(`${profile.xp.current} / ${profile.xp.target}`).width + 5, 210)
+            .printText("XP:", width/2 + 10, 210)
+            .printText(profile.xp.current, canvas.measureText("XP:").width + width/2 + 10 + 5, 210)
+            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + width/2 + 10 + 5, 210)
+            .printText(profile.xp.next, canvas.measureText("XP: "+profile.xp.current+" /").width + width/2 + 10 + 5, 210)
         )
         .setColor("#BCC0C0")
         .printRectangle(282, 220, 295, 10)
