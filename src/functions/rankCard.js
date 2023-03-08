@@ -2,11 +2,13 @@ import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
 export async function create(interaction) {
     if (!interaction || typeof interaction !== "object") throw new Error("at here!");
+
+    var msg;
     if (!interaction.deferred) {
         await interaction.deferReply();
     }
     else {
-        await interaction.editReply("Sedang proses membuat Kartu Rank...");
+        msg = await interaction.channel.send("Sedang proses membuat Kartu Rank...");
     }
 
     const user = interaction.user;
@@ -78,9 +80,10 @@ export async function create(interaction) {
         .printStrokeRectangle(282,220, 590,10)
         .png();
 
-    await interaction.editReply({
+    await interaction.channel.send({
         file: [
             { attachment: canvas, name: `${user.tag}-card.png` }
         ]
     });
+    if (msg) msg.delete().catch(_ => void 0);
 }
