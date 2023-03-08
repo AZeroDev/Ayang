@@ -1,6 +1,6 @@
 import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
-exports.create = async(interaction) => {
+export function create(interaction) {
     if (!options || typeof options !== "object") throw new Error();
     if (!interaction.deferred) {
         await interaction.deferReply();
