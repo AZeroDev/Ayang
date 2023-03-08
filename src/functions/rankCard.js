@@ -16,6 +16,7 @@ export async function create(interaction) {
 
     await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
     await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
+    await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
     await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
     await loadFont(process.cwd()+"/assets/font/TiltNeon-Regular.ttf", "TiltNeon");
     
@@ -47,13 +48,13 @@ export async function create(interaction) {
         .setStrokeWidth(10)
         .printStrokeRectangle(35,35, height-70, height-70)
         .setColor("white")
-        .setTextFont("50px TiltWarp")
+        .setTextFont("50px TiltWarp, NotoEmoji")
         .printText(username, 280, 90)
         .process(canvas =>
             canvas.setTextFont("50px TiltWarp")
             .printText("#"+user.discriminator, canvas.measureText(username).width + 280, 90)
         )
-        .setTextFont("35px TiltNeon")
+        .setTextFont("35px TiltNeon,NotoEmoji")
         .printText(profile.title, 280, 130)
         .process(canvas =>
             // One Line
