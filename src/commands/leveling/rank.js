@@ -13,7 +13,7 @@ export default {
         .setName("rank")
         .setDescription("Menampilkan kartu rank leveling")
         .addUserOption(option =>
-            userOption.setName("pemain")
+            option.setName("pemain")
             .setDescription("Pilih seseorang untuk menampilkan kartu rank nya")
         ),
     category: "Leveling",
