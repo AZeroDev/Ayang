@@ -12,7 +12,7 @@ export class RankCanvas {
         };
         this.profile = {
             avatar: "https://media.discordapp.net/attachments/1080473138342666381/1083619535187357776/ferna-t.png",
-            username: "Unknown",
+            username: "User",
             discriminator: "0000",
             bio: {
                 title: "Aku adalah pemain Bot Ferna",
@@ -70,7 +70,7 @@ export class RankCanvas {
         return this;
     }
     setBio(title, description) {
-        this.profile.discriminator = title;
+        this.profile.bio.title = title;
         return this;
     }
     setOptions(options) {
@@ -169,11 +169,11 @@ export class RankCanvas {
             .setShadowColor(this.options.border.style)
             .setShadowBlur(2.5)
             .setColor(this.options.border.style)
-            .printRectangle(283, 220, this._progressActive, 29)
+            .printRectangle(283, 220, this._progressActive, 30)
             .resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 29)
+            .printStrokeRectangle(283,220, this._proW, 30)
 
         return canvas.png();
     }
