@@ -94,7 +94,7 @@ export class RankCanvas {
     }
     async build() {
 
-        //await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
+        await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
         await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
         await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
         await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
@@ -156,11 +156,11 @@ export class RankCanvas {
                 .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
-                .setTextFont("35px Noto")
+                .setTextFont("35px Roboto")
                 .setTextAlign("right")
-                .printText("RANK", (width - 80), 90)
+                .printText("RANK", (width - 120), 90)
                 .setTextFont("35px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 80), 90)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 120), 90)
 
                 // Xp
                 .setTextAlign("right")
