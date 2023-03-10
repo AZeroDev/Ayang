@@ -5,8 +5,8 @@ export class RankCanvas {
         this.data = {
             level: 1,
             xp: {
-                current: 1024*15,
-                target: 1024*20,
+                current: 0,
+                target: 512*3,
             },
             rank: 999,
         };
@@ -70,7 +70,7 @@ export class RankCanvas {
 
             // border
             .setShadowColor(this.options.border.style)
-            .setShadowBlur(5)
+            .setShadowBlur(2.5)
             .setStroke(this.options.border.style)
             .setStrokeWidth(10)
             .printStrokeRectangle(35, 35, height-70, height-70)
@@ -101,15 +101,15 @@ export class RankCanvas {
 
                 // Xp
                 .setTextAlign("right")
-                .printText("XP:", (width-55)-canvas.measureText(" "+this.data.xp.current+" / "+this.data.xp.target).width - 5, 210)
-                .printText(this.data.xp.current.toString(), (width-55)-canvas.measureText(" / "+this.data.xp.target).width - 5, 210)
-                .printText("/", (width-55)-canvas.measureText(" "+this.data.xp.target).width - 5, 210)
-                .printText(this.data.xp.target, (width-55) - 5, 210)
+                .printText("XP:", (width-54)-canvas.measureText(" "+this.data.xp.current+" / "+this.data.xp.target).width - 5, 210)
+                .printText(this.data.xp.current.toString(), (width-54)-canvas.measureText(" / "+this.data.xp.target).width - 5, 210)
+                .printText("/", (width-54)-canvas.measureText(" "+this.data.xp.target).width - 5, 210)
+                .printText(this.data.xp.target, (width-54) - 5, 210)
             )
 
             // progress bar
             .setShadowColor(this.options.border.style)
-            .setShadowBlur(4)
+            .setShadowBlur(2.5)
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 29)
             .resetShadows()
