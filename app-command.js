@@ -8,7 +8,7 @@ async function register(type, commands = []) {
     for (const directory of readdirSync("./src/commands")
         .filter(cmd => type === "guild" ? cmd : cmd.category !== "Pengembang")) {
         for (const file of readdirSync(`./src/commands/${directory}`)) {
-            const command = (await import(`../commands/${directory}/${file}`)).default;
+            const command = (await import(`./src/commands/${directory}/${file}`)).default;
             commands.push(command.data.toJSON());
         }
     };
