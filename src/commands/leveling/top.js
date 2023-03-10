@@ -38,7 +38,7 @@ async function sendTopGlobal(interaction) {
     const embed = new EmbedBuilder()
         .setColor(interaction.client.config.colors.default)
         .setTitle("Peringkat Global - Top 10 besar leveling")
-        .setDescription("```\nmd"+data.map(e => `# ${e.position}. ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString().replaceAll(",",".")}`).join("\n")+"```");
+        .setDescription("```md\n"+data.map(e => `# ${e.position}. ${e.username}#${e.discriminator}\n- Level: ${e.level}\n- XP: ${e.xp.toLocaleString().replaceAll(",",".")}`).join("\n")+"```");
 
     await interaction.editReply({ embeds: [embed] });
 }

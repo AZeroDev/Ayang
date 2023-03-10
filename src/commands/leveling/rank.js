@@ -43,7 +43,7 @@ export default {
             .setAvatarBackgroundEnable(false)
             .setCurrentLvl(data.level)
             .setCurrentRank(data.position)
-            .setCurrenrXp(data.xp)
+            .setCurrentXp(data.xp)
             .setRequiredXp(level.xpFor(data.level))
             .build();
 
