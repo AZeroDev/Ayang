@@ -527,16 +527,16 @@ class RankCard {
             ctx.font = `36px ${ops.fontX}`;
             ctx.fillStyle = this.data.discriminator.color;
             ctx.textAlign = "center";
-            ctx.fillText(`#${discrim.substr(0, 4)}`, ctx.measureText(name).width + 335, 164);
+            ctx.fillText(`#${discrim.substr(0, 4)}`, ctx.measureText(name).width + 330, 164);
         }
 
         // fill level
         if (this.data.level.display && !isNaN(this.data.level.data)) {
-            ctx.font = `bold 36px ${ops.fontY}`;
+            ctx.font = `bold 32px ${ops.fontY}`;
             ctx.fillStyle = this.data.level.textColor;
             ctx.fillText(this.data.level.displayText, 800 - ctx.measureText(toAbbrev(parseInt(this.data.level.data))).width, 82);
 
-            ctx.font = `bold 32px ${ops.fontY}`;
+            ctx.font = `bold 36px ${ops.fontY}`;
             ctx.fillStyle = this.data.level.color;
             ctx.textAlign = "end";
             ctx.fillText(toAbbrev(parseInt(this.data.level.data)), 860, 82);
@@ -544,21 +544,21 @@ class RankCard {
 
         // fill rank
         if (this.data.rank.display && !isNaN(this.data.rank.data)) {
-            ctx.font = `bold 36px ${ops.fontY}`;
+            ctx.font = `bold 32px ${ops.fontY}`;
             ctx.fillStyle = this.data.rank.textColor;
             ctx.fillText(this.data.rank.displayText, 800 - ctx.measureText(toAbbrev(parseInt(this.data.level.data)) || "-").width - 7 - ctx.measureText(this.data.level.displayText).width - 7 - ctx.measureText(toAbbrev(parseInt(this.data.rank.data)) || "-").width, 82);
 
-            ctx.font = `bold 32px ${ops.fontY}`;
+            ctx.font = `bold 36px ${ops.fontY}`;
             ctx.fillStyle = this.data.rank.color;
             ctx.textAlign = "end";
-            ctx.fillText(toAbbrev(parseInt(this.data.rank.data)), 790 - ctx.measureText(toAbbrev(parseInt(this.data.level.data)) || "-").width - 7 - ctx.measureText(this.data.level.displayText).width, 82);
+            ctx.fillText("#"+toAbbrev(parseInt(this.data.rank.data)), 790 - ctx.measureText(toAbbrev(parseInt(this.data.level.data)) || "-").width - 7 - ctx.measureText(this.data.level.displayText).width, 82);
         }
 
         // show progress
         ctx.font = `bold 30px ${ops.fontY}`;
         ctx.fillStyle = this.data.requiredXP.color;
         ctx.textAlign = "start";
-        ctx.fillText("/ " + toAbbrev(this.data.requiredXP.data), 670 + ctx.measureText(toAbbrev(this.data.currentXP.data)).width + 15, 164);
+        ctx.fillText("/ " + toAbbrev(this.data.requiredXP.data), 670 + ctx.measureText(toAbbrev(this.data.currentXP.data)).width, 164);
 
         ctx.fillStyle = this.data.currentXP.color;
         ctx.fillText(toAbbrev(this.data.currentXP.data), 670, 164);
