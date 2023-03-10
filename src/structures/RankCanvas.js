@@ -170,8 +170,10 @@ export class RankCanvas {
             )
 
             // progress bar
+            .setGlobalAlpha(0.5)
             .setColor(this.options.border.bgStyle)
             .printRectangle(283,220, this._proW, 26)
+            .setGlobalAlpha(1)
             //.setShadowColor(this.options.border.shadow)
             //.setShadowBlur(2.5)
             .setColor(this.options.border.style)
