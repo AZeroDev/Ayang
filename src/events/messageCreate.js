@@ -17,6 +17,7 @@ export default{
                 .setThumbnail(message.author.displayAvatarURL({ dynamic:true, size: 512 }))
                 .setDescription(`Selamat! **${message.author.tag}** telah naik **level \`${user.level}\`**.`);
             message.channel.send({ embeds: [embed] });
+            await level.setXp(user.id, "global", 0);
         }
     }
 }

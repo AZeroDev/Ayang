@@ -142,7 +142,7 @@ class FernaLeveling {
 
         if (user.dailyXp <= user.dailyXpLimit){
         user.xp = xp;
-        user.dailyXp = user.xp;
+        if (xp !== 0) user.dailyXp = user.xp;
         user.level = Math.floor(0.1 * Math.sqrt(user.xp));
         user.lastUpdated = new Date();
     
