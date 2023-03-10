@@ -15,7 +15,8 @@
     "undici": "^5.20.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "start:app": "node app-command.js && node index.js"
   },
   "keywords": [
     "discord",
