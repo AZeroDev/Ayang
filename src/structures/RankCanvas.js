@@ -125,7 +125,7 @@ export class RankCanvas {
             .setColor(this.options.background.layer)
             .printRectangle(30, 30, width-60, height-60)
             .setGlobalAlpha(1)
-            .printImage(avatar, 50 ,50, height-90, height-90)
+            .printImage(avatar, 45 ,45, height-90, height-90)
 
             // border
             //.setShadowColor(this.options.border.shadow)
@@ -151,15 +151,14 @@ export class RankCanvas {
                 canvas.setTextFont("30px Noto")
 
                 // Rank
+                .setTextFont("40px Noto")
                 .printText("LEVEL", 280,210)
-                .setTextFont("30px Noto")
                 .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
-                .setTextFont("30px Roboto")
-                .printText("RANK", 280, 180)
-                .setTextFont("30px Roboto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 180)
+                .setTextFont("35px Roboto")
+                .printText("RANK", 280, 170)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 170)
 
                 // Xp
                 .setTextAlign("right")
