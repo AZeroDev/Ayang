@@ -98,10 +98,10 @@ export class RankCanvas {
 
                 // Xp
                 .setTextAlign("right")
-                .printText("XP:", width-239, 210)
-                .printText(this.data.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 210)
-                .printText("/", canvas.measureText("XP: "+this.data.xp.current).width + width-239 + 5, 210)
-                .printText(this.data.xp.target.toString(), canvas.measureText("XP: "+this.data.xp.current+" /").width + width-239 + 5, 210)
+                .printText("XP:", canvas.measureText("XP: "+this.data.xp.current+" /").width-239+5, 210)
+                .printText(this.data.xp.current.toString(), canvas.measureText("XP: "+this.data.xp.current).width + width-239+5, 210)
+                .printText("/", canvas.measureText("XP:").width + width-239+5, 210)
+                .printText(this.data.xp.target.toString(), width-239, 210)
             )
 
             // progress bar
