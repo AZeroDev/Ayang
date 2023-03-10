@@ -148,7 +148,7 @@ export class RankCanvas {
             .printText(this.profile.bio.title, 280, 125)*/
 
             .process(canvas =>
-                canvas.setTextFont("25px Noto")
+                canvas.setTextFont("35px Noto")
 
                 // Rank
                 .printText("RANK", 280,210)
@@ -156,13 +156,14 @@ export class RankCanvas {
                 .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280 + 5, 210)
 
                 // Level
-                .setTextFont("25px Noto")
+                .setTextFont("35px Noto")
                 .printText("LEVEL", canvas.measureText("RANK #"+this.tls(this.data.rank)).width + 280 + 20, 210)
                 .setTextFont("35px Noto")
                 .printText(this.tls(this.data.level), canvas.measureText(`RANK #${this.tls(this.data.rank)} LEVEL`).width + 280 + 20, 210)
 
                 // Xp
                 .setTextAlign("right")
+                .setTextFont("25px Noto")
                 .printText("XP:", (width-54.5)-canvas.measureText(" "+this.tls(this.data.xp.current)+" / "+this.tls(this.data.xp.target)).width - 5, 210)
                 .printText(this.tls(this.data.xp.current), (width-54.5)-canvas.measureText(" / "+this.tls(this.data.xp.target)).width - 5, 210)
                 .printText("/", (width-54.5)-canvas.measureText(" "+this.tls(this.data.xp.target)).width - 5, 210)
