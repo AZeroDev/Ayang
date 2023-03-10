@@ -119,7 +119,7 @@ export class RankCanvas {
 
         return canvas.png();
     }
-    get tls(number) {
+    tls(number) {
         return number.toLocaleString().replaceAll(",", ".");
     }
     get _proW() {
