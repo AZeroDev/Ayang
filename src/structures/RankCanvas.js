@@ -98,7 +98,7 @@ export class RankCanvas {
         await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
         await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
         await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
-        await loadFont(process.cwd()+"/assets/font/TiltNeon-Regular.ttf", "TiltNeon");
+        //await loadFont(process.cwd()+"/assets/font/TiltNeon-Regular.ttf", "TiltNeon");
 
         const avatar = await loadImage(this.profile.avatar);
         const username = this.profile.username.length > 13 ? `${this.profile.username.substr(0, 10)}...`: this.profile.username;
@@ -156,11 +156,11 @@ export class RankCanvas {
                 .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
-                .setTextFont("35px Roboto")
+                .setTextFont("30px Roboto")
                 .setTextAlign("right")
-                .printText("RANK", (width - 120), 90)
-                .setTextFont("35px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 120), 90)
+                .printText("RANK", (width - 120), 70)
+                .setTextFont("30px Noto")
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 120), 0)
 
                 // Xp
                 .setTextAlign("right")
@@ -179,7 +179,7 @@ export class RankCanvas {
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 21)
             //.resetShadows()
-            .setStroke(this.options.border.bgStyle)
+            .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
             .printStrokeRectangle(283,220, this._proW, 26);
 
