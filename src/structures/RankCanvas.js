@@ -13,7 +13,7 @@ export class RankCanvas {
         this.profile = {
             avatar: "https://media.discordapp.net/attachments/1080473138342666381/1083619535187357776/ferna-t.png",
             username: "Unknown",
-            discriminator: "#0000",
+            discriminator: "0000",
             bio: {
                 title: "Aku adalah pemain Bot Ferna",
             },
@@ -40,7 +40,7 @@ export class RankCanvas {
 
         const avatar = await loadImage(this.profile.avatar);
         const username = this.profile.username.length > 13 ? `${this.profile.username.substr(0, 10)}...`: this.profile.username;
-        const bio = this.profile.bio.title.length > 25 ? `${this.profile.bio.title.substr(0, 22)}...` : this.profile.bio.title;
+        const bio = this.profile.bio.title.length > 30 ? `${this.profile.bio.title.substr(0, 28)}...` : this.profile.bio.title;
 
         const width = 934;
         const height = 282;
@@ -83,7 +83,7 @@ export class RankCanvas {
 
             // user bio title
             .setTextFont("35px TiltNeon,NotoEmoji")
-            .printText(this.profile.bio.title, 280, 120)
+            .printText(this.profile.bio.title, 280, 125)
             .process(canvas =>
                 // One Line
                 canvas.setTextFont("25px Noto")
@@ -97,6 +97,7 @@ export class RankCanvas {
                 .printText(this.data.level.toString(), canvas.measureText(`RANK #${this.data.rank} LEVEL`).width + 280 + 20, 210)
 
                 // Xp
+                .setTextAlign("right")
                 .printText("XP:", width-239, 210)
                 .printText(this.data.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 210)
                 .printText("/", canvas.measureText("XP: "+this.data.xp.current).width + width-239 + 5, 210)
