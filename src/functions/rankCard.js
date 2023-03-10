@@ -35,6 +35,7 @@ export async function create(interaction) {
 
     const width = 934;
     const height = 282;
+    const progressWidth = 590;
 
     const canvas = new Canvas(width, height)
         .setColor("#23272A")
@@ -78,7 +79,7 @@ export async function create(interaction) {
         .printRectangle(282, 220, _getProgressExp(), 10)
         .setStroke("white")
         .setStrokeWidth(7)
-        .printStrokeRectangle(282,220, 590,10)
+        .printStrokeRectangle(282,220, progressWidth,10)
         .png();
 
     await interaction.channel.send({
@@ -93,10 +94,10 @@ export async function create(interaction) {
         const rx = profile.xp.target;
 
         if (rx <= 0) return 1;
-        if (cx > rx) return parseInt(pbWidth) || 0;
+        if (cx > rx) return parseInt(progressWidth) || 0;
 
         let width = (cx * 615) / rx;
-        if (width > pbWidth) width = pbWidth;
+        if (width > progressWidth) width = progressWidth;
         return parseInt(width) || 0;
     }
 }
