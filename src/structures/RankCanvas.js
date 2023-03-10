@@ -124,14 +124,14 @@ export class RankCanvas {
             .setColor(this.options.background.layer)
             .printRectangle(30, 30, width-60, height-60)
             .setGlobalAlpha(1)
-            .printImage(avatar, 40 ,40, height-80, height-80)
+            .printImage(avatar, 50 ,50, height-90, height-90)
 
             // border
             .setShadowColor(this.options.border.style)
             .setShadowBlur(2.5)
             .setStroke(this.options.border.style)
             .setStrokeWidth(10)
-            .printStrokeRectangle(35, 35, height-70, height-70)
+            .printStrokeRectangle(40, 40, height-80, height-80)
             .resetShadows()
 
             // user tag
