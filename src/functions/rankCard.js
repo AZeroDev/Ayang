@@ -76,10 +76,10 @@ export async function create(interaction) {
             .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width-239 + 5, 210)
         )
         .setColor("#BCC0C0")
-        .printRectangle(282, 220, _progressActive(), 29)
+        .printRectangle(283, 220, _progressActive(), 29)
         .setStroke("white")
-        .setStrokeWidth(1)
-        .printStrokeRectangle(282,220, progressWidth, 29)
+        .setStrokeWidth(2)
+        .printStrokeRectangle(283,220, progressWidth, 29)
         .png();
 
     await interaction.channel.send({
