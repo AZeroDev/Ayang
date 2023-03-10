@@ -1,4 +1,4 @@
-const Canvas = require("@napi-rs/canvas");
+import Canvas from "@napi-rs/canvas";
 
 /**
  * @typedef {object} CanvacordRankData
