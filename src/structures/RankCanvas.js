@@ -30,9 +30,70 @@ export class RankCanvas {
             },
         };
     }
+    setData(data) {
+        this.data = data;
+        return this;
+    }
+    setLevel(data) {
+        this.data.level = data;
+        return this;
+    }
+    setRank(data) {
+        this.data.rank = data;
+        return this;
+    }
+    setXp(current, target) {
+        if (current && target) {
+            this.data.xp = { current, target };
+        }
+        else {
+            this.data.xp = current
+            ? { current, target: this.data.target }
+            : { current: this.data.current, target };
+        }
+        return this;
+    }
+    setProfile(profile) {
+        this.profile = profile;
+        return this;
+    }
+    setAvatar(link) {
+        this.profile.avatar = link;
+        return this;
+    }
+    setUsername(name) {
+        this.profile.username = name;
+        return this;
+    }
+    setDiscriminator(randomInt) {
+        this.profile.discriminator = randomInt;
+        return this;
+    }
+    setBio(title, description) {
+        this.profile.discriminator = title;
+        return this;
+    }
+    setOptions(options) {
+        this.options = options;
+        return this;
+    }
+    setBackground(image, layer) {
+        this.options.background.style = image;
+        if (layer) this.options.background.layer = layer;
+        return this;
+    }
+    setBorder(color, shadow) {
+        this.options.border.style = color;
+        if (shadow) this.options.border.shadow = shadow;
+        return this;
+    }
+    setColor(code) {
+        this.options.defaultColor = codeB
+        return this;
+    }
     async build() {
 
-        await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
+        //await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
         await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
         await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
         await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
