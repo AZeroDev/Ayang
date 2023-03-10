@@ -36,7 +36,7 @@ async function sendTopGlobal(interaction) {
     const data = await level.computeLeaderboard(interaction.client, raw, true);
 
     const embed = new EmbedBuilder()
-        .setColor(interaction.config.colors.default)
+        .setColor(interaction.client.config.colors.default)
         .setTitle("Peringkat Global - Top 10 besar leveling")
         .setDescription("```\nmd"+data.map(e => `# ${e.position}. ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString().replaceAl(",",".")}`).join("\n")+"```");
 

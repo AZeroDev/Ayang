@@ -37,7 +37,7 @@ export default {
 
         const card = new RankCardBuilder()
             .setFontDefault("Inter")
-            .setNicknameText(user.tag)
+            .setNicknameText({ content: user.tag })
             .setAvatarImgURL(user.avatarLink)
             .setBackgroundImgURL(assets.bgLink)
             .setAvatarBackgroundEnable(false)
