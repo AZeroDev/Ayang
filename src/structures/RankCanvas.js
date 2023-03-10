@@ -5,7 +5,7 @@ export class RankCanvas {
         this.data = {
             level: 1,
             xp: {
-                current: 512*5,
+                current: 1024*15,
                 target: 1024*20,
             },
             rank: 999,
@@ -101,10 +101,10 @@ export class RankCanvas {
 
                 // Xp
                 .setTextAlign("right")
-                .printText("XP:", (width-50)-canvas.measureText(" "+this.data.xp.current+" / "+this.data.xp.target) - 5, 210)
-                .printText(this.data.xp.current.toString(), (width-50)-canvas.measureText(" / "+this.data.xp.target).width - 5, 210)
-                .printText("/", (width-50)-canvas.measureText(" "+this.data.xp.target).width - 5, 210)
-                .printText(this.data.xp.target, (width-50) - 5, 210)
+                .printText("XP:", (width-60)-canvas.measureText(" "+this.data.xp.current+" / "+this.data.xp.target).width - 5, 210)
+                .printText(this.data.xp.current.toString(), (width-60)-canvas.measureText(" / "+this.data.xp.target).width - 5, 210)
+                .printText("/", (width-60)-canvas.measureText(" "+this.data.xp.target).width - 5, 210)
+                .printText(this.data.xp.target, (width-60) - 5, 210)
             )
 
             // progress bar
