@@ -158,9 +158,9 @@ export class RankCanvas {
                 // Level
                 .setTextFont("35px Noto")
                 .setTextAlign("right")
-                .printText("RANK", canvas.measureText(username+"#"+discriminator), 90)
+                .printText("RANK", canvas.measureText(username+"#"+this.profile.discriminator).width, 90)
                 .setTextFont("35px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText(`${username}#${discriminator} RANK`).width + 280 + 20, 90)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText(`${username}#${this.profile.discriminator} RANK`).width + 280 + 20, 90)
 
                 // Xp
                 .setTextAlign("right")
