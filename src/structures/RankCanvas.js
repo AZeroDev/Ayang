@@ -5,7 +5,7 @@ export class RankCanvas {
         this.data = {
             level: 1,
             xp: {
-                current: 1,
+                current: 512*5,
                 target: 1024*20,
             },
             rank: 999,
