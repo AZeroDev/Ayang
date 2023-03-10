@@ -98,9 +98,9 @@ export class RankCanvas {
 
                 // Xp
                 .setTextAlign("right")
-                .printText("XP:", width - canvas.measureText(this.data.xp.current+" / "+this.data.xp.target) - 5, 210)
-                .printText(this.data.xp.current.toString(), width - canvas.measureText("/ "+this.data.xp.target).width - 5, 210)
-                .printText("/", width - canvas.measureText(this.data.xp.target.toString()).width - 5, 210)
+                .printText("XP:", width + canvas.measureText(this.data.xp.current+" / "+this.data.xp.target) - 5, 210)
+                .printText(this.data.xp.current.toString(), width + canvas.measureText("/ "+this.data.xp.target).width - 5, 210)
+                .printText("/", width + canvas.measureText(this.data.xp.target.toString()).width - 5, 210)
                 .printText(this.data.xp.target.toString(), width - canvas.measureText("XP: "+this.data.xp.current+" /").width - 5, 210)
             )
 
