@@ -6,7 +6,7 @@ export class RankCanvas {
             level: 1,
             xp: {
                 current: 1,
-                target: 1024*9,
+                target: 1024*20,
             },
             rank: 999,
         };
@@ -44,6 +44,9 @@ export class RankCanvas {
 
         const width = 934;
         const height = 282;
+
+        this.data.xp.current = this.tls(this.data.xp.current);
+        this.data.xp.target = this.tls(this.data.xp.target);
 
         // creating canvas 2D
         const canvas = new Canvas(width, height)
@@ -100,8 +103,8 @@ export class RankCanvas {
                 .setTextAlign("right")
                 .printText("XP:", width-239-canvas.measureText(this.data.xp.current+" / "+this.data.xp.target) - 5, 210)
                 .printText(this.data.xp.current.toString(), width-239-canvas.measureText("/ "+this.data.xp.target).width - 5, 210)
-                .printText("/", width-239-canvas.measureText(this.data.xp.target.toString()).width - 5, 210)
-                .printText(this.data.xp.target.toString(), width-canvas.measureText("XP: "+this.data.xp.current+" /").width - 5, 210)
+                .printText("/", width-239-canvas.measureText(this.data.xp.target).width - 5, 210)
+                .printText(this.data.xp.target, width-canvas.measureText("XP: "+this.data.xp.current+" /").width - 5, 210)
             )
 
             // progress bar
@@ -115,6 +118,9 @@ export class RankCanvas {
             .printStrokeRectangle(283,220, this._proW, 29)
 
         return canvas.png();
+    }
+    get tls(number) {
+        return number.toLocaleString().replaceAll(",", ".");
     }
     get _proW() {
         return 590;
