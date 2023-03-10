@@ -106,9 +106,6 @@ export class RankCanvas {
         const width = 934;
         const height = 282;
 
-        this.data.xp.current = this.tls(this.data.xp.current);
-        this.data.xp.target = this.tls(this.data.xp.target);
-
         // creating canvas 2D
         const canvas = new Canvas(width, height)
         if (this.options.background.style.startsWith("http")) {
@@ -154,18 +151,18 @@ export class RankCanvas {
 
                 // Rank
                 .printText("RANK", 280,210)
-                .printText("#"+this.data.rank, canvas.measureText("RANK").width + 280 + 5, 210)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280 + 5, 210)
 
                 // Level
-                .printText("LEVEL", canvas.measureText("RANK #"+this.data.rank).width + 280 + 20, 210)
-                .printText(this.data.level.toString(), canvas.measureText(`RANK #${this.data.rank} LEVEL`).width + 280 + 20, 210)
+                .printText("LEVEL", canvas.measureText("RANK #"+this.tls(this.data.rank)).width + 280 + 20, 210)
+                .printText(this.tls(this.data.level), canvas.measureText(`RANK #${this.tls(this.data.rank)} LEVEL`).width + 280 + 20, 210)
 
                 // Xp
                 .setTextAlign("right")
-                .printText("XP:", (width-54)-canvas.measureText(" "+this.data.xp.current+" / "+this.data.xp.target).width - 5, 210)
-                .printText(this.data.xp.current.toString(), (width-54)-canvas.measureText(" / "+this.data.xp.target).width - 5, 210)
-                .printText("/", (width-54)-canvas.measureText(" "+this.data.xp.target).width - 5, 210)
-                .printText(this.data.xp.target, (width-54) - 5, 210)
+                .printText("XP:", (width-54.5)-canvas.measureText(" "+this.tls(this.data.xp.current)+" / "+this.tls(this.data.xp.target)).width - 5, 210)
+                .printText(this.tls(this.data.xp.current), (width-54.5)-canvas.measureText(" / "+this.tls(this.data.xp.target)).width - 5, 210)
+                .printText("/", (width-54.5)-canvas.measureText(" "+this.tls(this.data.xp.target)).width - 5, 210)
+                .printText(this.tls(this.data.xp.target), (width-54.5) - 5, 210)
             )
 
             // progress bar
