@@ -544,7 +544,6 @@ class RankCard {
 
         // fill rank
         if (this.data.rank.display && !isNaN(this.data.rank.data)) {
-            this.data.rank.data = "#"+this.data.rank.data;
             ctx.font = `bold 36px ${ops.fontY}`;
             ctx.fillStyle = this.data.rank.textColor;
             ctx.fillText(this.data.rank.displayText, 800 - ctx.measureText(toAbbrev(parseInt(this.data.level.data)) || "-").width - 7 - ctx.measureText(this.data.level.displayText).width - 7 - ctx.measureText(toAbbrev(parseInt(this.data.rank.data)) || "-").width, 82);
