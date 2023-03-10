@@ -655,7 +655,7 @@ class RankCard {
 
 }
 
-module.exports = RankCard;
+export default RankCard;
 
 function shorten(string = "", length = 13) {
     return string.length > length ? string.substr(0, length) : string;
