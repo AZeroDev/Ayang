@@ -1,103 +1,126 @@
 import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
-export async function create(interaction) {
-    if (!interaction || typeof interaction !== "object") throw new Error("at here!");
-
-    var msg;
-    if (!interaction.deferred) {
-        await interaction.deferReply();
+export class CanvasRank {
+    constructor() {
+        this.data = {
+            level: 1,
+            xp: {
+                current: 1,
+                target: 1024,
+            },
+            rank: 999,
+        };
+        this.profile = {
+            avatar: "https://media.discordapp.net/attachments/1080473138342666381/1083619535187357776/ferna-t.png",
+            username: "Unknown",
+            discriminator: "#0000",
+            bio: {
+                title: "Aku adalah pemain Bot Ferna",
+            },
+        };
+        this.options = {
+            background: {
+                style: "#23272A",
+                layer: "#333640",
+            },
+            defaultColor: "white",
+            border: {
+                style: "#BCC0C0",
+                shadow: "#BCC0C0",
+            },
+        };
     }
-    else {
-        msg = await interaction.channel.send("Sedang proses membuat Kartu Rank...");
+    async build() {
+
+        await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
+        await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
+        await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
+        await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
+        await loadFont(process.cwd()+"/assets/font/TiltNeon-Regular.ttf", "TiltNeon");
+
+        const avatar = await loadImage(this.profile.avatar);
+        const username = this.profile.username.length > 13 ? `${this.profile.username.substr(0, 10)}...`: this.profile.username;
+        const bio = this.profile.bio.title.length > 25 ? `${this.profile.bio.title.substr(0, 22)}...` : this.profile.bio.title;
+
+        const width = 934;
+        const height = 282;
+
+        // creating canvas 2D
+        const canvas = new Canvas(width, height)
+        if (this.background.style.startsWith("http")) {
+            // background image
+            const bg = await loadImage(this.background.style);
+            canvas.printImage(bg, 0, 0, width, height);
+        }
+        else {
+            // background color
+            canvas.setColor(this.background.style);
+            canvas.printRectangle(0, 0, width, height);
+        }
+
+        // background layer
+        canvas.setGlobalAlpha(0.5)
+            .setColor(this.background.layer)
+            .printRectangle(30, 30, width-60, height-60)
+            .setGlobalAlpha(1)
+            .printImage(avatar, 40 ,40, height-80, height-80)
+
+            // border
+            .setStroke(this.border.style)
+            .setStrokeWidth(10)
+            .printStrokeRectangle(35, 35, height-70, height-70)
+
+            // user tag
+            .setColor(this.defaultColor)
+            .setTextFont("50px TiltWarp, NotoEmoji")
+            .printText(username, 280, 90)
+            .process(canvas =>
+                canvas.printText("#"+this.profile.discriminator, canvas.measureText(username).width + 280, 90)
+            )
+
+            // user bio title
+            .setTextFont("35px TiltNeon,NotoEmoji")
+            .printText(this.profile.bio.title, 280, 120)
+            .process(canvas =>
+                // One Line
+                canvas.setTextFont("25px Noto")
+
+                // Rank
+                .printText("RANK", 280,210)
+                .printText("#"+this.data.rank, canvas.measureText("RANK").width + 280 + 5, 210)
+
+                // Level
+                .printText("LEVEL", canvas.measureText("RANK #"+this.data.rank).width + 280 + 20, 210)
+                .printText(this.data.level.toString(), canvas.measureText(`RANK #${this.data.rank} LEVEL`).width + 280 + 20, 210)
+
+                // Xp
+                .printText("XP:", width-239, 210)
+                .printText(this.data.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 210)
+                .printText("/", canvas.measureText("XP: "+this.data.xp.current).width + width-239 + 5, 210)
+                .printText(this.data.xp.target.toString(), canvas.measureText("XP: "+this.data.xp.current+" /").width + width-239 + 5, 210)
+            )
+
+            // progress bar
+            .setColor(this.border.style)
+            .printRectangle(283, 220, this._progressActive, 29)
+            .setStroke(this.defaultColor)
+            .setStrokeWidth(2)
+            .printStrokeRectangle(283,220, this._proW, 29)
+
+        return canvas.png();
     }
-
-    const user = interaction.user;
-    const data = {};
-
-    await loadFont(process.cwd()+"/assets/font/Roboto-Regular.ttf", "Roboto");
-    await loadFont(process.cwd()+"/assets/font/NotoSans-Regular.ttf", "Noto");
-    await loadFont(process.cwd()+"/assets/font/NotoColorEmoji-Reguler.ttf", "NotoEmoji");
-    await loadFont(process.cwd()+"/assets/font/TiltWarp-Regular.ttf", "TiltWarp");
-    await loadFont(process.cwd()+"/assets/font/TiltNeon-Regular.ttf", "TiltNeon");
-    
-    const avatar = await loadImage(user.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }));
-    const username = user.username.length > 13 ? `${user.username.substr(0, 10)}...`: user.username;
-
-    const profile = {
-        title: "Ferna Bot Developer",
-        level: 23,
-        rank: 12,
-        xp: {
-            current: 1024,
-            target: 2048,
-        },
-    };
-
-    const width = 934;
-    const height = 282;
-    const progressWidth = 590;
-
-    const canvas = new Canvas(width, height)
-        .setColor("#23272A")
-        .printRectangle(0,0, width, height)
-        .setGlobalAlpha(0.5)
-        .setColor("#333640")
-        .printRectangle(30,30, width-60, height-60)
-        .setGlobalAlpha(1)
-        .printImage(avatar, 40,40, height-80, height-80)
-        .setStroke("#BCC0C0")
-        .setStrokeWidth(10)
-        .printStrokeRectangle(35,35, height-70, height-70)
-        .setColor("white")
-        .setTextFont("50px TiltWarp, NotoEmoji")
-        .printText(username, 280, 90)
-        .process(canvas =>
-            canvas.setTextFont("50px TiltWarp")
-            .printText("#"+user.discriminator, canvas.measureText(username).width + 280, 90)
-        )
-        .setTextFont("35px TiltNeon,NotoEmoji")
-        .printText(profile.title, 280, 130)
-        .process(canvas =>
-            // One Line
-            canvas.setTextFont("25px Noto")
-
-            // Rank
-            .printText("RANK", 280,210)
-            .printText("#"+profile.rank, canvas.measureText("RANK").width + 280 + 5, 210)
-
-            // Level
-            .printText("LEVEL", canvas.measureText("RANK #"+profile.rank).width + 280 + 20, 210)
-            .printText(profile.level.toString(), canvas.measureText(`RANK #${profile.rank} LEVEL`).width + 280 + 20, 210)
-
-            // Xp
-            .printText("XP:", width-239, 210)
-            .printText(profile.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 210)
-            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + width-239 + 5, 210)
-            .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width-239 + 5, 210)
-        )
-        .setColor("#BCC0C0")
-        .printRectangle(283, 220, _progressActive(), 29)
-        .setStroke("white")
-        .setStrokeWidth(2)
-        .printStrokeRectangle(283,220, progressWidth, 29)
-        .png();
-
-    await interaction.channel.send({
-        files: [
-            { attachment: canvas, name: `${user.tag}-card.png` }
-        ]
-    });
-    if (msg) msg.delete().catch(_ => void 0);
-
-    function _progressActive() {
-        const cx = profile.xp.current
-        const rx = profile.xp.target;
+    get _proW() {
+        return 590;
+    }
+    get _progressActive() {
+        const cx = this.profile.xp.current
+        const rx = this.profile.xp.target;
 
         if (rx <= 0) return 1;
-        if (cx > rx) return parseInt(progressWidth) || 0;
+        if (cx > rx) return parseInt(this.proW) || 0;
 
         let width = (cx * 615) / rx;
-        if (width > progressWidth) width = progressWidth;
+        if (width > this.proW) width = this.proW;
         return parseInt(width) || 0;
     }
 }
