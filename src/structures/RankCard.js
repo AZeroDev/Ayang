@@ -608,10 +608,10 @@ class RankCard {
         ctx.save();
 
         // circle
-        ctx.beginPath();
+        /*ctx.beginPath();
         ctx.arc(125 + 10, 125 + 20, 100, 0, Math.PI * 2, true);
         ctx.closePath();
-        ctx.clip();
+        ctx.clip();*/
 
         // draw avatar
         ctx.drawImage(avatar, 35, 45, this.data.avatar.width + 20, this.data.avatar.height + 20);
