@@ -75,9 +75,9 @@ export async function create(interaction) {
             .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width-239 + 5, 210)
         )
         .setColor("#BCC0C0")
-        .printRectangle(282, 220, 295, 10)
+        .printRectangle(282, 220, _getProgressExp(), 10)
         .setStroke("white")
-        .setStrokeWidth(1)
+        .setStrokeWidth(7)
         .printStrokeRectangle(282,220, 590,10)
         .png();
 
@@ -87,4 +87,16 @@ export async function create(interaction) {
         ]
     });
     if (msg) msg.delete().catch(_ => void 0);
+
+    function _getProgressExp() {
+        const cx = profile.xp.current
+        const rx = profile.xp.target;
+
+        if (rx <= 0) return 1;
+        if (cx > rx) return parseInt(pbWidth) || 0;
+
+        let width = (cx * 615) / rx;
+        if (width > pbWidth) width = pbWidth;
+        return parseInt(width) || 0;
+    }
 }
