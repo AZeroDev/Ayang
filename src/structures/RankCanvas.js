@@ -157,9 +157,10 @@ export class RankCanvas {
 
                 // Level
                 .setTextFont("35px Noto")
-                .printText("RANK", canvas.measureText("LEVEL "+this.tls(this.data.level)).width + 280 + 20, 210)
+                .setTextAlign("right")
+                .printText("RANK", canvas.measureText(username+"#"+discriminator), 90)
                 .setTextFont("35px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText(`LEVEL ${this.tls(this.data.level)} RANK`).width + 280 + 20, 210)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText(`${username}#${discriminator} RANK`).width + 280 + 20, 90)
 
                 // Xp
                 .setTextAlign("right")
@@ -172,7 +173,7 @@ export class RankCanvas {
 
             // progress bar
             .setColor(this.options.border.bgStyle)
-            .printRectangle(283,220, this._proW, 21)
+            .printRectangle(283,220, this._proW, 26)
             //.setShadowColor(this.options.border.shadow)
             //.setShadowBlur(2.5)
             .setColor(this.options.border.style)
@@ -180,7 +181,7 @@ export class RankCanvas {
             //.resetShadows()
             .setStroke(this.options.border.bgStyle)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 21);
+            .printStrokeRectangle(283,220, this._proW, 26);
 
         return canvas.png();
     }
