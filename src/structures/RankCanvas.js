@@ -70,7 +70,7 @@ export class RankCanvas {
             .setStrokeWidth(10)
             .printStrokeRectangle(35, 35, height-70, height-70)
             .setShadowColor(this.options.border.style)
-            .setShadowBlur(1)
+            .setShadowBlur(5)
             .resetShadows()
 
             // user tag
@@ -108,7 +108,7 @@ export class RankCanvas {
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 29)
             .setShadowColor(this.options.border.style)
-            .setShadowBlur(0.5)
+            .setShadowBlur(2.5)
             .resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
