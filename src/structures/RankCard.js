@@ -609,7 +609,7 @@ class RankCard {
 
         // circle
         ctx.beginPath();
-        ctx.arc(125 + 10, 125 + 20, 100, 0, Math.PI * 2, true);
+        //ctx.arc(125 + 10, 125 + 20, 100, 0, Math.PI * 2, true);
         ctx.closePath();
         ctx.clip();
 
