@@ -28,6 +28,7 @@ export default {
 
         user.avatarLink = user.displayAvatarURL({ dynamic: true, size: 1024, format: "png" });
         if (!user.avatarLink) user.avatarLink = user.defaultAvatarURL;
+        else user.avatarLink = user.avatarLink.replace(".webp", ".png")
 
         const data = await level.fetch(user.id, "global", true);
         if (!data) {
