@@ -1,6 +1,6 @@
 import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
-export class CanvasRank {
+export class RankCanvas {
     constructor() {
         this.data = {
             level: 1,
@@ -69,6 +69,9 @@ export class CanvasRank {
             .setStroke(this.options.border.style)
             .setStrokeWidth(10)
             .printStrokeRectangle(35, 35, height-70, height-70)
+            .setShadowColor(this.options.border.style)
+            .setShadowBlur(1)
+            .resetShadows()
 
             // user tag
             .setColor(this.options.defaultColor)
@@ -103,6 +106,9 @@ export class CanvasRank {
             // progress bar
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 29)
+            .setShadowColor(this.options.border.style)
+            .setShadowBlur(0.5)
+            .resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
             .printStrokeRectangle(283,220, this._proW, 29)
@@ -113,8 +119,8 @@ export class CanvasRank {
         return 590;
     }
     get _progressActive() {
-        const cx = this.profile.xp.current
-        const rx = this.profile.xp.target;
+        const cx = this.data.xp.current;
+        const rx = this.data.xp.target;
 
         if (rx <= 0) return 1;
         if (cx > rx) return parseInt(this.proW) || 0;
