@@ -158,7 +158,7 @@ export class RankCanvas {
                 // Level
                 .setTextFont("30px Roboto")
                 .printText("RANK", 280, 175)
-                .setTextFont("30px Noto")
+                .setTextFont("30px Roboto")
                 .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 175)
 
                 // Xp
