@@ -148,19 +148,18 @@ export class RankCanvas {
             .printText(this.profile.bio.title, 280, 125)*/
 
             .process(canvas =>
-                canvas.setTextFont("25px Noto")
+                canvas.setTextFont("30px Noto")
 
                 // Rank
                 .printText("LEVEL", 280,210)
-                .setTextFont("25px Noto")
+                .setTextFont("30px Noto")
                 .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
                 .setTextFont("30px Roboto")
-                .setTextAlign("right")
-                .printText("RANK", (width - 120), 70)
+                .printText("RANK", 280, 190)
                 .setTextFont("30px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 120), 0)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + (width - 120), 80)
 
                 // Xp
                 .setTextAlign("right")
