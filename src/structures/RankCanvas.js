@@ -1,6 +1,6 @@
 import { Canvas, loadFont, loadImage } from "canvas-constructor/napi-rs";
 
-export class RankCanvas {
+export class RankCard {
     constructor() {
         this.data = {
             level: 1,
@@ -20,7 +20,7 @@ export class RankCanvas {
         };
         this.options = {
             background: {
-                style: "#23272A",
+                style: "https://media.discordapp.net/attachments/1080473138342666381/1083734819978100757/112.png.jpg",
                 layer: "#333640",
             },
             defaultColor: "white",
