@@ -63,23 +63,23 @@ export async function create(interaction) {
 
             // Rank
             .printText("RANK", 280,210)
-            .printText("#"+profile.rank, canvas.measureText("RANK").width + 280 + 5, 210)
+            .printText("#"+profile.rank, canvas.measureText("RANK").width + 280 + 5, 200)
 
             // Level
-            .printText("LEVEL", canvas.measureText("RANK #"+profile.rank).width + 280 + 20, 210)
+            .printText("LEVEL", canvas.measureText("RANK #"+profile.rank).width + 280 + 20, 200)
             .printText(profile.level.toString(), canvas.measureText(`RANK #${profile.rank} LEVEL`).width + 280 + 20, 210)
 
             // Xp
-            .printText("XP:", width-239, 210)
-            .printText(profile.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 210)
-            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + width-239 + 5, 210)
-            .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width-239 + 5, 210)
+            .printText("XP:", width-239, 200)
+            .printText(profile.xp.current.toString(), canvas.measureText("XP:").width + width-239 + 5, 200)
+            .printText("/", canvas.measureText("XP: "+profile.xp.current).width + width-239 + 5, 200)
+            .printText(profile.xp.target.toString(), canvas.measureText("XP: "+profile.xp.current+" /").width + width-239 + 5, 200)
         )
         .setColor("#BCC0C0")
-        .printRectangle(282, 220, _getProgressExp(), 10)
+        .printRectangle(282, 220, _getProgressExp(), 20)
         .setStroke("white")
-        .setStrokeWidth(7)
-        .printStrokeRectangle(282,220, progressWidth,10)
+        .setStrokeWidth(1)
+        .printStrokeRectangle(282,220, progressWidth,20)
         .png();
 
     await interaction.channel.send({
