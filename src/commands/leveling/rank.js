@@ -35,7 +35,7 @@ export default {
             return;
         }
 
-        const card = new RankCardBuilder({})
+        const card = await new RankCardBuilder({})
             .setFontDefault("Inter")
             .setNicknameText({ content: user.tag })
             .setAvatarImgURL(user.avatarLink)
