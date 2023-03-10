@@ -169,11 +169,11 @@ export class RankCanvas {
             .setShadowColor(this.options.border.style)
             .setShadowBlur(2.5)
             .setColor(this.options.border.style)
-            .printRectangle(283, 220, this._progressActive, 31)
+            .printRectangle(283, 220, this._progressActive, 21)
             .resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 31)
+            .printStrokeRectangle(283,220, this._proW, 21)
 
         return canvas.png();
     }
