@@ -25,8 +25,9 @@ export class RankCanvas {
             },
             defaultColor: "white",
             border: {
+                bgStyle: "#484b4E",
                 style: "#BCC0C0",
-                shadow: "#BCC0C0",
+                shadow: "black",
             },
         };
     }
@@ -127,7 +128,7 @@ export class RankCanvas {
             .printImage(avatar, 50 ,50, height-90, height-90)
 
             // border
-            .setShadowColor(this.options.border.style)
+            .setShadowColor(this.options.border.shadow)
             .setShadowBlur(2.5)
             .setStroke(this.options.border.style)
             .setStrokeWidth(10)
@@ -143,18 +144,21 @@ export class RankCanvas {
             )
 
             // user bio title
-            .setTextFont("35px TiltNeon,NotoEmoji")
-            .printText(this.profile.bio.title, 280, 125)
+            /*.setTextFont("35px TiltNeon,NotoEmoji")
+            .printText(this.profile.bio.title, 280, 125)*/
+
             .process(canvas =>
-                // One Line
                 canvas.setTextFont("25px Noto")
 
                 // Rank
                 .printText("RANK", 280,210)
+                .setTextFont("35px Noto")
                 .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280 + 5, 210)
 
                 // Level
+                .setTextFont("25px Noto")
                 .printText("LEVEL", canvas.measureText("RANK #"+this.tls(this.data.rank)).width + 280 + 20, 210)
+                .setTextFont("35px Noto")
                 .printText(this.tls(this.data.level), canvas.measureText(`RANK #${this.tls(this.data.rank)} LEVEL`).width + 280 + 20, 210)
 
                 // Xp
@@ -166,14 +170,16 @@ export class RankCanvas {
             )
 
             // progress bar
-            .setShadowColor(this.options.border.style)
+            .setColor(this.options.border.bgStyle)
+            .printRectangle(283,220, this._proW, 21)
+            .setShadowColor(this.options.border.shadow)
             .setShadowBlur(2.5)
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 21)
             .resetShadows()
-            .setStroke(this.options.defaultColor)
+            /*.setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 21)
+            .printStrokeRectangle(283,220, this._proW, 21)*/
 
         return canvas.png();
     }
