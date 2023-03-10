@@ -151,14 +151,14 @@ export class RankCanvas {
                 canvas.setTextFont("30px Noto")
 
                 // Rank
-                .setTextFont("40px Noto")
+                .setTextFont("35px Noto")
                 .printText("LEVEL", 280,210)
                 .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
                 .setTextFont("35px Roboto")
-                .printText("RANK", 280, 170)
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 170)
+                .printText("RANK", 280, 175)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 5 + 280, 175)
 
                 // Xp
                 .setTextAlign("right")
