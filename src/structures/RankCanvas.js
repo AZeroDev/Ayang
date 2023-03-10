@@ -6,7 +6,7 @@ export class RankCanvas {
             level: 1,
             xp: {
                 current: 1,
-                target: 1024,
+                target: 1024*9,
             },
             rank: 999,
         };
