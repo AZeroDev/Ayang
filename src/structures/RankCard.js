@@ -527,7 +527,7 @@ class RankCard {
             ctx.font = `36px ${ops.fontX}`;
             ctx.fillStyle = this.data.discriminator.color;
             ctx.textAlign = "center";
-            ctx.fillText(`#${discrim.substr(0, 4)}`, ctx.measureText(name).width + 20 + 335, 164);
+            ctx.fillText(`#${discrim.substr(0, 4)}`, ctx.measureText(name).width + 335, 164);
         }
 
         // fill level
@@ -555,7 +555,7 @@ class RankCard {
         }
 
         // show progress
-        ctx.font = `bold 30px ${ops.fontX}`;
+        ctx.font = `bold 30px ${ops.fontY}`;
         ctx.fillStyle = this.data.requiredXP.color;
         ctx.textAlign = "start";
         ctx.fillText("/ " + toAbbrev(this.data.requiredXP.data), 670 + ctx.measureText(toAbbrev(this.data.currentXP.data)).width + 15, 164);
