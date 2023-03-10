@@ -36,7 +36,11 @@ export default {
             return;
         }
 
-        const card = await new RankCardBuilder({})
+        const card = await new RankCardBuilder({
+            colorTextDefault: "white",
+            progressBarColor: "white",
+            currentXPColor: "white",
+        })
             .setFontDefault("Inter")
             .setNicknameText({ content: user.tag })
             .setAvatarImgURL(user.avatarLink)
