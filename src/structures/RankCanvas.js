@@ -101,7 +101,7 @@ export class RankCanvas {
 
         const avatar = await loadImage(this.profile.avatar);
         const username = this.profile.username.length > 13 ? `${this.profile.username.substr(0, 10)}...`: this.profile.username;
-        const bio = this.profile.bio.title.length > 30 ? `${this.profile.bio.title.substr(0, 28)}...` : this.profile.bio.title;
+        const bio = this.profile.bio.title.length > 23 ? `${this.profile.bio.title.substr(0, 20)}...` : this.profile.bio.title;
 
         const width = 934;
         const height = 282;
@@ -169,11 +169,11 @@ export class RankCanvas {
             .setShadowColor(this.options.border.style)
             .setShadowBlur(2.5)
             .setColor(this.options.border.style)
-            .printRectangle(283, 220, this._progressActive, 30)
+            .printRectangle(283, 220, this._progressActive, 31)
             .resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 30)
+            .printStrokeRectangle(283,220, this._proW, 31)
 
         return canvas.png();
     }
