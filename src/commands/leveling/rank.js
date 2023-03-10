@@ -43,8 +43,8 @@ export default {
             .setAvatarBackgroundEnable(false)
             .setCurrentLvl(data.level)
             .setCurrentRank(data.position)
-            .setCurrentXp(data.xp)
-            .setRequiredXp(level.xpFor(data.level))
+            .setCurrentXP(data.xp)
+            .setRequiredXP(level.xpFor(data.level))
             .build();
 
         await interaction.editReply({ content: '', files: [{ attachment: await card.toBuffer(), name: `${user.tag}_rank-card.png` }] });
