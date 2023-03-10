@@ -159,7 +159,7 @@ export class RankCanvas {
                 .setTextFont("30px Roboto")
                 .printText("RANK", 280, 175)
                 .setTextFont("30px Roboto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 175)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280, 175.5)
 
                 // Xp
                 .setTextAlign("right")
@@ -176,7 +176,7 @@ export class RankCanvas {
             //.setShadowColor(this.options.border.shadow)
             //.setShadowBlur(2.5)
             .setColor(this.options.border.style)
-            .printRectangle(283, 220, this._progressActive, 21)
+            .printRectangle(283, 220, this._progressActive, 26)
             //.resetShadows()
             .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
