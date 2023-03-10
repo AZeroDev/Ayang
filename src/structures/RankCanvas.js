@@ -103,13 +103,13 @@ export class RankCanvas {
                 .setTextAlign("right")
                 .printText("XP:", width-239-canvas.measureText(this.data.xp.current+" / "+this.data.xp.target) - 5, 210)
                 .printText(this.data.xp.current.toString(), width-239-canvas.measureText("/ "+this.data.xp.target).width - 5, 210)
-                .printText("/", width-239-canvas.measureText(this.data.xp.target).width - 5, 210)
+                .printText("/", width-canvas.measureText(this.data.xp.target).width - 5, 210)
                 .printText(this.data.xp.target, width-canvas.measureText("XP: "+this.data.xp.current+" /").width - 5, 210)
             )
 
             // progress bar
             .setShadowColor(this.options.border.style)
-            .setShadowBlur(2.5)
+            .setShadowBlur(4)
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 29)
             .resetShadows()
