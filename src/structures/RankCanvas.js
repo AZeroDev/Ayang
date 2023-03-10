@@ -26,8 +26,8 @@ export class RankCanvas {
             defaultColor: "white",
             border: {
                 bgStyle: "#484b4E",
-                style: "#BCC0C0",
-                shadow: "black",
+                style: "white",
+                shadow: "white",
             },
         };
     }
@@ -128,12 +128,12 @@ export class RankCanvas {
             .printImage(avatar, 50 ,50, height-90, height-90)
 
             // border
-            .setShadowColor(this.options.border.shadow)
-            .setShadowBlur(2.5)
+            //.setShadowColor(this.options.border.shadow)
+            //.setShadowBlur(2.5)
             .setStroke(this.options.border.style)
             .setStrokeWidth(10)
             .printStrokeRectangle(40, 40, height-80, height-80)
-            .resetShadows()
+            //.resetShadows()
 
             // user tag
             .setColor(this.options.defaultColor)
@@ -148,18 +148,18 @@ export class RankCanvas {
             .printText(this.profile.bio.title, 280, 125)*/
 
             .process(canvas =>
-                canvas.setTextFont("35px Noto")
+                canvas.setTextFont("25px Noto")
 
                 // Rank
-                .printText("RANK", 280,210)
-                .setTextFont("35px Noto")
-                .printText("#"+this.tls(this.data.rank), canvas.measureText("RANK").width + 280 + 5, 210)
+                .printText("LEVEL", 280,210)
+                .setTextFont("25px Noto")
+                .printText(this.tls(this.data.level), canvas.measureText("LEVEL").width + 280 + 5, 210)
 
                 // Level
                 .setTextFont("35px Noto")
-                .printText("LEVEL", canvas.measureText("RANK #"+this.tls(this.data.rank)).width + 280 + 20, 210)
+                .printText("RANK", canvas.measureText("LEVEL "+this.tls(this.data.level)).width + 280 + 20, 210)
                 .setTextFont("35px Noto")
-                .printText(this.tls(this.data.level), canvas.measureText(`RANK #${this.tls(this.data.rank)} LEVEL`).width + 280 + 20, 210)
+                .printText("#"+this.tls(this.data.rank), canvas.measureText(`LEVEL ${this.tls(this.data.level)} RANK`).width + 280 + 20, 210)
 
                 // Xp
                 .setTextAlign("right")
@@ -173,14 +173,14 @@ export class RankCanvas {
             // progress bar
             .setColor(this.options.border.bgStyle)
             .printRectangle(283,220, this._proW, 21)
-            .setShadowColor(this.options.border.shadow)
-            .setShadowBlur(2.5)
+            //.setShadowColor(this.options.border.shadow)
+            //.setShadowBlur(2.5)
             .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 21)
-            .resetShadows()
-            /*.setStroke(this.options.defaultColor)
+            //.resetShadows()
+            .setStroke(this.options.border.bgStyle)
             .setStrokeWidth(2)
-            .printStrokeRectangle(283,220, this._proW, 21)*/
+            .printStrokeRectangle(283,220, this._proW, 21);
 
         return canvas.png();
     }
