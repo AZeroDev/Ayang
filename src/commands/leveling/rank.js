@@ -36,10 +36,14 @@ export default {
             return;
         }
 
+        const member = await interaction.guild.members.fetch({ user, withPresences: true });
+
         const card = await new RankCardBuilder({
+            userStatus: member.presence.status,
             colorTextDefault: "white",
             progressBarColor: "white",
             currentXPColor: "white",
+            requiredXPColor: "white",
         })
             .setFontDefault("Inter")
             .setNicknameText({ content: user.tag })
