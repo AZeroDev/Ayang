@@ -47,31 +47,31 @@ export class CanvasRank {
 
         // creating canvas 2D
         const canvas = new Canvas(width, height)
-        if (this.background.style.startsWith("http")) {
+        if (this.options.background.style.startsWith("http")) {
             // background image
-            const bg = await loadImage(this.background.style);
+            const bg = await loadImage(this.options.background.style);
             canvas.printImage(bg, 0, 0, width, height);
         }
         else {
             // background color
-            canvas.setColor(this.background.style);
+            canvas.setColor(this.options.background.style);
             canvas.printRectangle(0, 0, width, height);
         }
 
         // background layer
         canvas.setGlobalAlpha(0.5)
-            .setColor(this.background.layer)
+            .setColor(this.options.background.layer)
             .printRectangle(30, 30, width-60, height-60)
             .setGlobalAlpha(1)
             .printImage(avatar, 40 ,40, height-80, height-80)
 
             // border
-            .setStroke(this.border.style)
+            .setStroke(this.options.border.style)
             .setStrokeWidth(10)
             .printStrokeRectangle(35, 35, height-70, height-70)
 
             // user tag
-            .setColor(this.defaultColor)
+            .setColor(this.options.defaultColor)
             .setTextFont("50px TiltWarp, NotoEmoji")
             .printText(username, 280, 90)
             .process(canvas =>
@@ -101,9 +101,9 @@ export class CanvasRank {
             )
 
             // progress bar
-            .setColor(this.border.style)
+            .setColor(this.options.border.style)
             .printRectangle(283, 220, this._progressActive, 29)
-            .setStroke(this.defaultColor)
+            .setStroke(this.options.defaultColor)
             .setStrokeWidth(2)
             .printStrokeRectangle(283,220, this._proW, 29)
 
