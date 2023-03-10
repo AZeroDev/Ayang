@@ -198,7 +198,7 @@ export class RankCanvas {
         if (rx <= 0) return 1;
         if (cx > rx) return parseInt(this.proW) || 0;
 
-        let width = (cx * 615) / rx;
+        let width = (cx * this._proW) / rx;
         if (width > this.proW) width = this.proW;
         return parseInt(width) || 0;
     }
